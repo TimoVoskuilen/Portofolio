@@ -1,0 +1,93 @@
+---
+title: "Timo Voskuilen resume"
+author: Timo Voskuilen
+date: "`r Sys.Date()`"
+output:
+  pagedown::html_resume:
+    # set it to true for a self-contained HTML page but it'll take longer to render
+    self_contained: false
+# uncomment this line to produce HTML and PDF in RStudio:
+#knit: pagedown::chrome_print
+---
+
+Contact Info {#contact}
+--------------------------------------------------------------------------------
+
+- <i class="fa fa-github"></i> [github.com/TimoVoskuilen](https://github.com/TimoVoskuilen)
+
+
+Disclaimer {#disclaimer}
+--------------------------------------------------------------------------------
+
+
+Last updated on `r Sys.Date()`.
+
+
+
+Main
+================================================================================
+
+Timo Voskuilen {#student}
+--------------------------------------------------------------------------------
+
+Student with experience working in the biotechnology industry.
+Skilled in techniques commonly used in the laboratory,
+such as cell culture, organoid culture, DNA isolation and PCR.
+
+Also very interested and learning data sciences and programming (R, R shiny, Bash).
+
+
+Education {data-icon=graduation-cap data-concise=true}
+--------------------------------------------------------------------------------
+
+### ROC Midden nederland
+
+Microbiological analyst
+
+Utrecht, Nederland
+
+2015
+
+Thesis: Organoid dissociation optimilization. 
+
+### Hogeschool Utrecht
+
+B.S. biomolecular research
+
+Utrecht, Nederland
+
+2019
+
+
+Research Experience {data-icon=laptop}
+--------------------------------------------------------------------------------
+
+### Research Assistant
+
+Utrecht center of TIck Borne Diseases (UCTD), Universiteit Utrecht 
+
+Utrecht, Nederland
+
+2017 - 2018
+
+The purpose of my internship at Utrecht Center of Tick Borne Diseases (UCTD)
+was identifying hotspots for ticks and tick borne diseases. I was responsible for the taxonomic identification of send in ticks.
+
+- 
+
+### Research assistant
+
+Hub Organoids.
+
+Utrecht, Nederland
+
+2018 - 2019
+
+- The goal of my internship at HUB was the optimization of organoid
+dissociation to single cells for transfection. I was also responsible
+for making culture media, and culturing a recombinant
+HEK293T cell line.
+
+### Publications
+
+""Tekenscanner": a novel smartphone application for companion animal owners and veterinarians to engage in tick and tick-borne pathogen surveillance in the Netherlands," Parasit Vectors, 2019
