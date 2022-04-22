@@ -1,0 +1,48 @@
+---
+title: "Portofolio_a1.1"
+author: "Timo Voskuilen"
+date: '2022-04-19'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+#install.packages("drc")
+library("drc")
+library("readxl")
+library(ggplot2)
+```
+
+```{r A}
+data_ex1.1 <- read_excel("CE.LIQ.FLOW.062_Tidydata.xlsx")
+```
+
+```{r}
+data_ex1.1
+which(is.na(data_ex1.1$compConcentration))
+data_ex1.1$compConcentration[259] <- 0.000195
+typeof(data_ex1.1$RawData)
+typeof(data_ex1.1$compName)
+typeof(data_ex1.1$compConcentration)
+```
+
+```{r}
+data_ex1.1 %>% ggplot(aes(x = compConcentration + 0.0001, y = RawData, color = compName, shape = expType))+
+  geom_jitter(width = 0.1, height = 0.1)+
+  labs(title = "Relation between compound concentration and raw data",
+       y = "offspring count",
+       x = "Compound concentration") +
+  scale_x_log10()
+
+```
+
+The positive control for this experiment is ethanol, the negative control for this experiment is S-medium
+
+
+
+
+
+
+
+
+
