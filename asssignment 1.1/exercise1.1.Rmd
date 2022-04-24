@@ -1,0 +1,46 @@
+---
+title: "port_1.1"
+author: "Timo Voskuilen"
+date: '2022-04-22'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library("tidyverse")
+library("ggplot2")
+library("readxl")
+```
+
+```{r}
+#loading the excel file
+exc1_1 <- read_excel("data/CE.LIQ.FLOW.062_Tidydata.xlsx")
+exc1_1
+exc1_1$compConcentration[259] <- 0.000195
+exc1_1$compConcentration <- as.numeric(exc1_1$compConcentration)
+
+
+exc1_1 %>% ggplot(aes(x = compConcentration + 0.0001, y = RawData, colour = compName, shape = expType))+
+  geom_jitter(size = 1, )+
+  scale_x_log10() +
+  theme(title = element_text(size=5.8))+
+  labs(
+    title = "Graph where varying of concentration of different compounds is plotted against the number of offspring",
+       x  = "compound concentration",
+       y = "number of offspring")
+  
+
+exc1_1_negative <- exc1_1 %>% filter(expType == "controlNegative")
+exc1_1_negative$RawData %>% mean()
+exc1_1_normalized <- exc1_1 %>% mutate(normalized = RawData / 85.9)
+
+exc1_1_normalized %>% ggplot(aes(x = compConcentration + 0.0001, y = normalized, colour = compName, shape = expType))+
+  geom_jitter(size = 1, )+
+  scale_x_log10() +
+  theme(title = element_text(size=5.8))+
+  labs(
+    title = "Graph where varying of concentration of different compounds is plotted against the number of offspring",
+       x  = "compound concentration",
+       y = "number of offspring")
+```
+
+Omdat de negatieve controle de standaard situatie is qua het aantal nakomelingen, en je wilt kijken wat de effecten van de stoffen zijn op nakomelingen.
