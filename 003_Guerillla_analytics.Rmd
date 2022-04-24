@@ -1,0 +1,20 @@
+---
+title: "003_Guerilla_analytics"
+author: "Timo Voskuilen"
+date: '2022-04-24'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+An important part of having a project repository is to keep it easily accesible and clean. This will allow anyone who uses the repository to be able to easily find their way around the files and data. The data structure in the repository used for this portfolio is based on the Guerilla Analytics Principle.
+
+
+An example of this van be found below:
+
+```{r, echo=FALSE}
+# Create a tree containing data structure of the GitHub repo
+fs::dir_tree(dir = "https://github.com/TimoVoskuilen/Portofolio")
+```
