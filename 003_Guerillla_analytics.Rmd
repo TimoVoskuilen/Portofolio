@@ -19,4 +19,8 @@ An example of this van be found below:
 ```{r}
 #create a tree for the DAUR2 structure
 fs::dir_tree(here::here("data/data_Raw/003_data_management/daur2"))
+knitr::include_graphics("data/data_Raw/003_data_management/Guerilla analytics framework daur2.png")
 ```
+
+
+
