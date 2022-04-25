@@ -14,7 +14,9 @@ An important part of having a project repository is to keep it easily accesible 
 
 An example of this van be found below:
 
-```{r, echo=FALSE}
-# Create a tree containing data structure of the GitHub repo
-fs::dir_tree(dir = "https://github.com/TimoVoskuilen/Portofolio")
+
+
+```{r}
+#create a tree for the DAUR2 structure
+fs::dir_tree(here::here("data/data_Raw/003_data_management/daur2"))
 ```
