@@ -246,3 +246,14 @@ output:
 
 <!--chapter:end:Index.Rmd-->
 
+
+
+**Vrije ruimte **
+
+Ik vind het belangrijk om de data die wij genereren beschikbaar te maken voor mensen die er minder verstand van hebben. een goede manier om dit te doen is het bouwen van een interactieve website met shiny. Ik kan de data gaan gebruiken die gebruikt wordt voor les7.
+
+
+
+
+
+
