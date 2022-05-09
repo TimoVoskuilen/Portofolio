@@ -16,7 +16,3 @@ An example of this van be found below:
 fs::dir_tree(dir = "https://github.com/TimoVoskuilen/Portofolio/tree/main/data/data_Raw/003_data_management")
 knitr::include_graphics("data/data_Raw/003_data_management/Guerilla analytics framework daur2.png")
 ```
-
-
-\newpage
-

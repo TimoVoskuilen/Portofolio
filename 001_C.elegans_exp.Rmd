@@ -80,5 +80,3 @@ mean_normalized_data %>% ggplot(aes(x = compConcentration, y = mean_RawData_norm
 Figure 4: Scatterplot displaying the amount of offspring at different concentrations per compound (colour) and experiment type (symbol) normalized on the negative control.
 
 this step was taken to get the result in relation to the "0" value, the amount of offspring from without any compound.
-
-\newpage
