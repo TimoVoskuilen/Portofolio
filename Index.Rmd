@@ -8,6 +8,8 @@ output:
   bookdown::gitbook: default
   #bookdown::html_book: default
 ---
+# Index
+
 Assignment 1:
 -----------------------------------
 Goal of this assignment:
