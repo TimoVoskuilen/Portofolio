@@ -1,0 +1,17 @@
+---
+title: "Portofolio"
+author: "Timo Voskuilen"
+site: bookdown::bookdown_site
+documentclass: book
+output:
+  bookdown::gitbook: default
+  #bookdown::pdf_book: default
+---
+
+# C.elegans experiment
+
+# Guerilla analytics
+
+# CV
+
+# Looking ahead

@@ -1,0 +1,248 @@
+---
+title: "port_1.1"
+author: "Timo Voskuilen"
+date: '2022-04-22'
+output: html_document
+---
+
+
+**C.Elegans experiment**
+
+```{r setup, include=FALSE}
+library("tidyverse")
+library("ggplot2")
+library("readxl")
+```
+The data for this exercise was kindly supplied by J. Louter (INT/ILC) and was derived from an experiment in which adult C.elegans nematodes were exposed to varying concentrations of different compounds.The variables RawData (the outcome - number of offspring counted as an integer value, after incubation time), compName (the generic name of the compound/chemical), the compConcentration (the concentration of the compound), and the expType are the most important variables in this dataset.
+
+And the data types of the variables RawData, compName and compConcentration:
+```{r 1.1.c, include = FALSE}
+#loading the excel file
+exc1_1 <- read_excel("data/data_Raw/001_C.elegans_exp/CE.LIQ.FLOW.062_Tidydata.xlsx")
+
+
+# Display the data type of select columns
+exc1_1 %>% select(RawData, compName, compConcentration) %>% head(1)
+```
+
+It would be expected that the data types of the columns are dbl, chr and dbl. compConcentration however, has the datatype chr. This means the format was imported incorrectly making it difficult to analyse the data.
+
+```{r, include = FALSE}
+#fixing the compConcentration data type
+exc1_1$compConcentration[259] <- 0.000195
+exc1_1$compConcentration <- as.double(exc1_1$compConcentration)
+```
+
+after transforming the compConcentration data to double, the data was plotted in a scatterplot graph with the data for the different compounds on the y-axis (RawData) and the varying concentrations on the x-axis (compConcentration). Each variable got a colour matching the compName and a symbol matching the expType column-values. Jitter and log10 scaling of the X axis was added, for the "correct" graph
+
+```{r, warning=FALSE, message=FALSE, echo = FALSE}
+exc1_1 %>% ggplot(aes(x = compConcentration + 0.0001, y = RawData, colour = compName, shape = expType))+
+  geom_jitter(size = 1, )+
+  scale_x_log10() +
+  theme(title = element_text(size=5.8))+
+  labs(
+    title = "Graph where varying of concentration of different compounds is plotted against the number of offspring",
+    caption = "Data supplied by J. Louter (INT/ILC)",
+       x  = "compound concentration",
+       y = "number of offspring")
+```
+
+Figure 1: Scatterplot displaying the amount of offspring at different concentrations per compound (colour) and experiment type (symbol)
+
+The positive control for this experiments is ethanol. The negative control for this experiment is S-medium.
+
+To analyze this experiment and learn whether there is an effect of different concentrations on offspring count and the effects of different compounds i would take these steps:
+-group data per compound
+-check if data is normally distributed
+-Use the appropriate statistical tests on the data to see if there is a significant difference in offspring count when using different concentrations of compounds
+-Calculate IC50 and create a plot of the curve
+
+
+For the next visualization I have normalized the data for the controlNegative in such a way that the mean value for controlNegative is exactly equal to 1 and that all other values are expressed as a fraction thereof. 
+
+
+```{r normalized, include = FALSE}
+# Calculate the mean of the RawData
+mean_data <- exc1_1 %>% 
+  select(expType, RawData, compName, compConcentration) %>% 
+  group_by(expType) %>% 
+  filter(expType == 'controlNegative') %>% 
+  summarise(mean_RawData = mean(RawData, na.rm = TRUE)) 
+# Normalise the RawData using the calculated mean
+normalized_data <- exc1_1 %>% 
+  select(expType, compName, compConcentration, RawData) %>%
+  mutate(RawData_normalized = RawData / mean_data$mean_RawData)
+# Calculate the mean of the normalised data
+mean_normalized_data <- normalized_data %>% group_by(expType, compName, compConcentration) %>%
+  summarise(mean_RawData_normalized = mean(RawData_normalized, na.rm = TRUE))
+knitr::kable(mean_normalized_data %>% head(5))
+# Plot the normalised mean using ggplot
+
+```
+
+
+```{r, echo = FALSE}
+mean_normalized_data %>% ggplot(aes(x = compConcentration, y = mean_RawData_normalized)) + 
+  geom_point() + 
+  geom_jitter(aes(colour = compName, shape = expType), width = 1) +
+  labs(title = "Normalized mean compound RawData per compound concentration",
+       caption = "Data supplied by J. Louter (INT/ILC)") 
+```
+
+Figure 4: Scatterplot displaying the amount of offspring at different concentrations per compound (colour) and experiment type (symbol) normalized on the negative control.
+
+this step was taken to get the result in relation to the "0" value, the amount of offspring from without any compound.
+
+<!--chapter:end:001_C.elegans_exp.Rmd-->
+
+---
+title: "003_Guerilla_analytics"
+author: "Timo Voskuilen"
+date: '2022-04-24'
+output: html_document
+---
+
+**GUERILLA ANALYTICS:**
+
+An important part of having a project repository is to keep it easily accesible and clean. This will allow anyone who uses the repository to be able to easily find their way around the files and data. The data structure in the repository used for this portfolio is based on the Guerilla Analytics Principle.
+
+An example of this van be found below:
+
+
+```{r}
+#create a tree for the DAUR2 structure
+fs::dir_tree(dir = "https://github.com/TimoVoskuilen/Portofolio/tree/main/data/data_Raw/003_data_management")
+knitr::include_graphics("data/data_Raw/003_data_management/Guerilla analytics framework daur2.png")
+```
+
+
+
+
+<!--chapter:end:003_Guerillla_analytics.Rmd-->
+
+---
+title: "Timo Voskuilen resume"
+author: Timo Voskuilen
+date: "`r Sys.Date()`"
+output:
+  pagedown::html_resume:
+    # set it to true for a self-contained HTML page but it'll take longer to render
+    self_contained: false
+# uncomment this line to produce HTML and PDF in RStudio:
+#knit: pagedown::chrome_print
+---
+
+Contact Info {#contact}
+--------------------------------------------------------------------------------
+
+- <i class="fa fa-github"></i> [github.com/TimoVoskuilen](https://github.com/TimoVoskuilen)
+
+
+Disclaimer {#disclaimer}
+--------------------------------------------------------------------------------
+
+
+Last updated on `r Sys.Date()`.
+
+
+
+Main
+================================================================================
+
+Timo Voskuilen {#student}
+--------------------------------------------------------------------------------
+
+Student with experience working in the biotechnology industry.
+Skilled in techniques commonly used in the laboratory,
+such as cell culture, organoid culture, DNA isolation and PCR.
+
+Also very interested and learning data sciences and programming (R, R shiny, Bash).
+
+
+Education {data-icon=graduation-cap data-concise=true}
+--------------------------------------------------------------------------------
+
+### ROC Midden nederland
+
+Microbiological analyst
+
+Utrecht, Nederland
+
+2015
+
+Thesis: Organoid dissociation optimilization. 
+
+### Hogeschool Utrecht
+
+B.S. biomolecular research
+
+Utrecht, Nederland
+
+2019
+
+
+Research Experience {data-icon=laptop}
+--------------------------------------------------------------------------------
+
+### Intern
+
+Utrecht center of TIck Borne Diseases (UCTD), Universiteit Utrecht 
+
+Utrecht, Nederland
+
+2017 - 2018
+
+The purpose of my internship at Utrecht Center of Tick Borne Diseases (UCTD)
+was identifying hotspots for ticks and tick borne diseases. I was responsible for the taxonomic identification of send in ticks.
+
+- 
+
+### Intern
+
+Hub Organoids.
+
+Utrecht, Nederland
+
+2018 - 2019
+
+- The goal of my internship at HUB was the optimization of organoid
+dissociation to single cells for transfection. I was also responsible
+for making culture media, and culturing a recombinant
+HEK293T cell line.
+
+### Publications
+
+""Tekenscanner": a novel smartphone application for companion animal owners and veterinarians to engage in tick and tick-borne pathogen surveillance in the Netherlands," Parasit Vectors, 2019
+
+<!--chapter:end:004_CV.Rmd-->
+
+---
+title: "005_looking_ahead"
+author: "Timo Voskuilen"
+date: '2022-04-24'
+output: html_document
+---
+
+**Looking ahead** 
+ 
+In 2 years time I want to be working as a data scientist specializing in data engineering. My first big step and also my first big inspiration in regards to bioinformatics and data science is creating this digital portfolio as a result of the minor Data Science For Biology.
+
+The next skill I would like to learn is controlling a database and building interactive websites, so that people who do not know data science can still enjoy the gift as it is. I will be doing a projecticum where both of these skills will be used.
+
+I will also be doing an internship where i will be learning to use a SQL database and translate the data to my coworkers through the magic of an interactive R.shiny website.
+
+<!--chapter:end:005_looking_ahead.Rmd-->
+
+---
+title: "Portofolio"
+author: "Timo Voskuilen"
+site: bookdown::bookdown_site
+documentclass: book
+output:
+  bookdown::gitbook: default
+  #bookdown::pdf_book: default
+---
+
+
+<!--chapter:end:Index.Rmd-->
+
