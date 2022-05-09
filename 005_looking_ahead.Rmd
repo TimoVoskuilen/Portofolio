@@ -1,10 +1,3 @@
----
-title: "005_looking_ahead"
-author: "Timo Voskuilen"
-date: '2022-04-24'
-output: html_document
----
-
 # Looking ahead
 
 In 2 years time I want to be working as a data scientist specializing in data engineering. My first big step and also my first big inspiration in regards to bioinformatics and data science is creating this digital portfolio as a result of the minor Data Science For Biology.

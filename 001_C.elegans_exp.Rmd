@@ -1,18 +1,11 @@
----
-title: "port_1.1"
-author: "Timo Voskuilen"
-date: '2022-04-22'
-output: html_document
----
 
-```{r setup, include=FALSE}
+# C.elegans experiment
+
+```{r, include=FALSE}
 library("tidyverse")
 library("ggplot2")
 library("readxl")
 ```
-
-
-# C.elegans experiment
 
 And the data types of the variables RawData, compName and compConcentration:
 ```{r 1.1.c, echo = FALSE}

@@ -1,10 +1,3 @@
----
-title: "003_Guerilla_analytics"
-author: "Timo Voskuilen"
-date: '2022-04-24'
-output: bookdown::html_document2
----
-
 # Guerilla analytics
 
 ```{r, include=FALSE}
