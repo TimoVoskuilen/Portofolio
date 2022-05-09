@@ -5,8 +5,12 @@ date: '2022-04-24'
 output: html_document
 ---
 
+# Looking ahead
+
 In 2 years time I want to be working as a data scientist specializing in data engineering. My first big step and also my first big inspiration in regards to bioinformatics and data science is creating this digital portfolio as a result of the minor Data Science For Biology.
 
 The next skill I would like to learn is controlling a database and building interactive websites, so that people who do not know data science can still enjoy the gift as it is. I will be doing a projecticum where both of these skills will be used.
 
 I will also be doing an internship where i will be learning to use a SQL database and translate the data to my coworkers through the magic of an interactive R.shiny website.
+
+\newpage

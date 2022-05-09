@@ -2,10 +2,12 @@
 title: "003_Guerilla_analytics"
 author: "Timo Voskuilen"
 date: '2022-04-24'
-output: html_document
+output: bookdown::html_document2
 ---
 
-```{r setup, include=FALSE}
+# Guerilla analytics
+
+```{r, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -23,4 +25,5 @@ knitr::include_graphics("data/data_Raw/003_data_management/Guerilla analytics fr
 ```
 
 
+\newpage
 
