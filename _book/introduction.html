@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Portofolio</title>
-  <meta name="description" content="Portofolio" />
+  <title>5 Introduction | Portofolio</title>
+  <meta name="description" content="5 Introduction | Portofolio" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Portofolio" />
+  <meta property="og:title" content="5 Introduction | Portofolio" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Portofolio" />
+  <meta name="twitter:title" content="5 Introduction | Portofolio" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="looking-ahead.html"/>
 
-<link rel="next" href="guerilla-analytics.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -170,82 +170,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Portofolio</h1>
-<p class="author"><em>Timo Voskuilen</em></p>
-<p class="date"><em>2022-05-11</em></p>
-</div>
-<div id="c.elegans-experiment" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">1</span> C.elegans experiment<a href="c.elegans-experiment.html#c.elegans-experiment" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>And the data types of the variables RawData, compName and compConcentration:</p>
-<pre><code>## # A tibble: 1 x 3
-##   RawData compName                   compConcentration
-##     &lt;dbl&gt; &lt;chr&gt;                      &lt;chr&gt;            
-## 1      44 2,6-diisopropylnaphthalene 4.99</code></pre>
-<p>It would be expected that the data types of the columns are dbl, chr and dbl. compConcentration however, has the datatype chr. This means the format was imported incorrectly making it difficult to analyse the data.</p>
-<p>after transforming the compConcentration data to double, the data was plotted in a scatterplot graph with the data for the different compounds on the y-axis (RawData) and the varying concentrations on the x-axis (compConcentration). Each variable got a colour matching the compName and a symbol matching the expType column-values. Jitter and log10 scaling of the X axis was added, for the “correct” graph</p>
-<pre><code>## Warning: Removed 5 rows containing missing values (geom_point).</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<p>Figure 1: Scatterplot displaying the amount of offspring at different concentrations per compound (colour) and experiment type (symbol)</p>
-<p>The positive control for this experiments is ethanol. The negative control for this experiment is S-medium.</p>
-<p>To analyze this experiment and learn whether there is an effect of different concentrations on offspring count and the effects of different compounds i would take these steps:
--group data per compound
--check if data is normally distributed
--Use the appropriate statistical tests on the data to see if there is a significant difference in offspring count when using different concentrations of compounds
--Calculate IC50 and create a plot of the curve</p>
-<p>For the next visualization I have normalized the data for the controlNegative in such a way that the mean value for controlNegative is exactly equal to 1 and that all other values are expressed as a fraction thereof.</p>
-<pre><code>## `summarise()` has grouped output by &#39;expType&#39;, &#39;compName&#39;. You can override using the `.groups` argument.</code></pre>
-<table>
-<colgroup>
-<col width="18%" />
-<col width="31%" />
-<col width="21%" />
-<col width="28%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">expType</th>
-<th align="left">compName</th>
-<th align="right">compConcentration</th>
-<th align="right">mean_RawData_normalized</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">controlNegative</td>
-<td align="left">S-medium</td>
-<td align="right">0.00e+00</td>
-<td align="right">1.0000000</td>
-</tr>
-<tr class="even">
-<td align="left">controlPositive</td>
-<td align="left">Ethanol</td>
-<td align="right">1.50e+00</td>
-<td align="right">0.5750873</td>
-</tr>
-<tr class="odd">
-<td align="left">controlVehicleA</td>
-<td align="left">Ethanol</td>
-<td align="right">5.00e-01</td>
-<td align="right">1.0690726</td>
-</tr>
-<tr class="even">
-<td align="left">experiment</td>
-<td align="left">2,6-diisopropylnaphthalene</td>
-<td align="right">4.99e-05</td>
-<td align="right">1.0391929</td>
-</tr>
-<tr class="odd">
-<td align="left">experiment</td>
-<td align="left">2,6-diisopropylnaphthalene</td>
-<td align="right">4.99e-04</td>
-<td align="right">0.9670159</td>
-</tr>
-</tbody>
-</table>
-<p><img src="_main_files/figure-html/normalized-1.png" width="672" /></p>
-<p>Figure 4: Scatterplot displaying the amount of offspring at different concentrations per compound (colour) and experiment type (symbol) normalized on the negative control.</p>
-<p>this step was taken to get the result in relation to the “0” value, the amount of offspring from without any compound.</p>
+<div id="introduction" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Introduction<a href="introduction.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Hi, My name is Timo Voskuilen. I am a 22 year old life sciences student at the university of applied sciences at the Hogeschool Utrecht. I am specified in biomedical research and thrive to find a career in the oncology. I am currently in the process of becoming a data scientist, I am following a course called Data science for biology at the Hogeschool Utrecht.</p>
 
 </div>
             </section>
@@ -253,8 +180,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
+<a href="looking-ahead.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="guerilla-analytics.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

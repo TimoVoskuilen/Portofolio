@@ -10,7 +10,7 @@ library("readxl")
 And the data types of the variables RawData, compName and compConcentration:
 ```{r 1.1.c, echo = FALSE}
 #loading the excel file
-exc1_1 <- read_excel("data/data_Raw/001_C.elegans_exp/CE.LIQ.FLOW.062_Tidydata.xlsx")
+exc1_1 <- read_excel("data_Raw/001_C.elegans_exp/CE.LIQ.FLOW.062_Tidydata.xlsx")
 
 
 # Display the data type of select columns
