@@ -10,4 +10,4 @@ output:
 
 # Thanks for visiting
 
-:D
+Goodbye.
