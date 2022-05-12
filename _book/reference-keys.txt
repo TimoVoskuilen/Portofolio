@@ -1,15 +1,6 @@
 c.elegans-experiment
 guerilla-analytics
 cv
-contact
-disclaimer
-student
-education
-roc-midden-nederland
-hogeschool-utrecht
-research-experience
-intern
-intern-1
-publications
 looking-ahead
+relational-databases
 introduction

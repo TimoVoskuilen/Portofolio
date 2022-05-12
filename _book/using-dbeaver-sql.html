@@ -5,7 +5,7 @@
 <meta charset="utf-8" />
 <meta name="generator" content="pandoc" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="Page not found | _main.knit" />
+<meta property="og:title" content="Using DBeaver SQL | _main.knit" />
 <meta property="og:type" content="book" />
 
 
@@ -14,9 +14,9 @@
 
 
 
-<meta name="description" content="Page not found | _main.knit">
+<meta name="description" content="Using DBeaver SQL | _main.knit">
 
-<title>Page not found | _main.knit</title>
+<title>Using DBeaver SQL | _main.knit</title>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -162,13 +162,39 @@ details > summary {
 </div>
 <div class="row">
 <div class="col-sm-12">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="using-dbeaver-sql" class="section level2 unnumbered">
+<h2>Using DBeaver SQL</h2>
+<p>Following the cleaning of the data, the datasets need to be saved in R and uploaded to DBeaver for further review using the following commands:
+<br></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="using-dbeaver-sql.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Save the data in .csv and .rds files</span></span>
+<span id="cb8-2"><a href="using-dbeaver-sql.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(flu_data, <span class="st">&quot;data_Raw/007_relational_databases/flu_data_tidy.csv&quot;</span>)</span>
+<span id="cb8-3"><a href="using-dbeaver-sql.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(dengue_data, <span class="st">&quot;data_Raw/007_relational_databases/dengue_data_tidy.csv&quot;</span>)</span>
+<span id="cb8-4"><a href="using-dbeaver-sql.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(gapminder, <span class="st">&quot;data_Raw/007_relational_databases/gapminder.csv&quot;</span>)</span>
+<span id="cb8-5"><a href="using-dbeaver-sql.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(flu_data, <span class="st">&quot;data_Raw/007_relational_databases/flu_data_tidy.rds&quot;</span>)</span>
+<span id="cb8-6"><a href="using-dbeaver-sql.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(dengue_data, <span class="st">&quot;data_Raw/007_relational_databases/dengue_data_tidy.rds&quot;</span>)</span>
+<span id="cb8-7"><a href="using-dbeaver-sql.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(gapminder, <span class="st">&quot;data_Raw/007_relational_databases/gapminder.rds&quot;</span>)</span>
+<span id="cb8-8"><a href="using-dbeaver-sql.html#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="using-dbeaver-sql.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Upload the data to DBeaver</span></span>
+<span id="cb8-10"><a href="using-dbeaver-sql.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;flu_data&quot;</span>,</span>
+<span id="cb8-11"><a href="using-dbeaver-sql.html#cb8-11" aria-hidden="true" tabindex="-1"></a>             flu_data,</span>
+<span id="cb8-12"><a href="using-dbeaver-sql.html#cb8-12" aria-hidden="true" tabindex="-1"></a>             <span class="at">overwrite =</span> <span class="cn">TRUE</span></span>
+<span id="cb8-13"><a href="using-dbeaver-sql.html#cb8-13" aria-hidden="true" tabindex="-1"></a>              )</span>
+<span id="cb8-14"><a href="using-dbeaver-sql.html#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;dengue_data&quot;</span>,</span>
+<span id="cb8-15"><a href="using-dbeaver-sql.html#cb8-15" aria-hidden="true" tabindex="-1"></a>             dengue_data,</span>
+<span id="cb8-16"><a href="using-dbeaver-sql.html#cb8-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">overwrite =</span> <span class="cn">TRUE</span></span>
+<span id="cb8-17"><a href="using-dbeaver-sql.html#cb8-17" aria-hidden="true" tabindex="-1"></a>              )</span>
+<span id="cb8-18"><a href="using-dbeaver-sql.html#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;gapminder&quot;</span>,</span>
+<span id="cb8-19"><a href="using-dbeaver-sql.html#cb8-19" aria-hidden="true" tabindex="-1"></a>             gapminder,</span>
+<span id="cb8-20"><a href="using-dbeaver-sql.html#cb8-20" aria-hidden="true" tabindex="-1"></a>             <span class="at">overwrite =</span> <span class="cn">TRUE</span></span>
+<span id="cb8-21"><a href="using-dbeaver-sql.html#cb8-21" aria-hidden="true" tabindex="-1"></a>              )</span></code></pre></div>
+<p>Uploading files into DBeaver and using the SQL shell to obtain some information about the data
+<img src="images/007_relational_databasesSQL.png" style="width:100.0%" alt="SQshell" />
+and using the console to get information from the data:
+<img src="images/007_relational_databasesdBEAVER.png" style="width:100.0%" alt="DBeaverexample" /></p>
 </div>
 <p style="text-align: center;">
+<a href="cleaning-up.html"><button class="btn btn-default">Previous</button></a>
+<a href="joining-the-data.html"><button class="btn btn-default">Next</button></a>
 </p>
 </div>
 </div>
