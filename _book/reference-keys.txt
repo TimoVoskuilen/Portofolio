@@ -1,6 +1,0 @@
-c.elegans-experiment
-guerilla-analytics
-cv
-looking-ahead
-relational-databases
-introduction
