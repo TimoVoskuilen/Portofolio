@@ -25,3 +25,5 @@ output:
  &nbsp;
 
 Hi, My name is Timo Voskuilen. I am a 22 year old life sciences student at the university of applied sciences at the Hogeschool Utrecht. I am specified in biomedical research and thrive to find a career in the field of oncology. I am currently in the process of becoming a data scientist, I am following a course called Data science for biology at the Hogeschool Utrecht, where im learning do statistical analysis with bash and R. 
+
+</body>
