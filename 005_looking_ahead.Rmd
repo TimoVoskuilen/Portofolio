@@ -6,4 +6,3 @@ The next skill I would like to learn is controlling a database and building inte
 
 I will also be doing an internship where i will be learning to use a SQL database and translate the data to my coworkers through the magic of an interactive R.shiny website.
 
-\newpage

@@ -1,7 +1,5 @@
 ---
-title: "Portofolio"
-author: "Timo Voskuilen"
-date: "`r Sys.Date()`"
+title: ""
 site: bookdown::bookdown_site
 documentclass: book
 output:
