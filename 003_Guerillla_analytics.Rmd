@@ -1,5 +1,13 @@
 # Guerilla analytics
-
+<body id = "start">
+<div class="sidenav">
+  <a href='index.html#Introduction'>Introduction</a>
+  <a href='1-c.elegans-experiment#data-visualisation'>Data visualisation</a>
+  <a href='open_peer_review.html#open peer review'>Peer review</a>
+  <a href='3-cv#CV'>CV</a>
+  <a href='4-looking-ahead#Looking ahead'>Looking ahead</a>
+  <a href='5-relational-databases#relational databases'>relational databases</a>
+ </div>
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
