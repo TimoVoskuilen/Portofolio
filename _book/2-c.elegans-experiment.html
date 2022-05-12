@@ -5,7 +5,7 @@
 <meta charset="utf-8" />
 <meta name="generator" content="pandoc" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="1 C.elegans experiment | _main.knit" />
+<meta property="og:title" content="2 C.elegans experiment | _main.knit" />
 <meta property="og:type" content="book" />
 
 
@@ -14,9 +14,9 @@
 
 
 
-<meta name="description" content="1 C.elegans experiment | _main.knit">
+<meta name="description" content="2 C.elegans experiment | _main.knit">
 
-<title>1 C.elegans experiment | _main.knit</title>
+<title>2 C.elegans experiment | _main.knit</title>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -144,22 +144,21 @@ details > summary {
 <div class="col-sm-12">
 <div id="TOC">
 <ul>
-<li><a href="1-c.elegans-experiment.html#c.elegans-experiment"><span class="toc-section-number">1</span> C.elegans experiment</a></li>
-<li><a href="2-guerilla-analytics.html#guerilla-analytics"><span class="toc-section-number">2</span> Guerilla analytics</a></li>
-<li><a href="3-cv.html#cv"><span class="toc-section-number">3</span> CV</a></li>
-<li><a href="4-looking-ahead.html#looking-ahead"><span class="toc-section-number">4</span> Looking ahead</a></li>
-<li><a href="5-relational-databases.html#relational-databases"><span class="toc-section-number">5</span> Relational databases</a></li>
-<li><a href="6-introduction.html#introduction"><span class="toc-section-number">6</span> Introduction</a></li>
+<li><a href="1-introduction.html#introduction"><span class="toc-section-number">1</span> Introduction</a></li>
+<li><a href="2-c.elegans-experiment.html#c.elegans-experiment"><span class="toc-section-number">2</span> C.elegans experiment</a></li>
+<li><a href="3-guerilla-analytics.html#guerilla-analytics"><span class="toc-section-number">3</span> Guerilla analytics</a></li>
+<li><a href="4-cv.html#cv"><span class="toc-section-number">4</span> CV</a></li>
+<li><a href="5-looking-ahead.html#looking-ahead"><span class="toc-section-number">5</span> Looking ahead</a></li>
+<li><a href="6-relational-databases.html#relational-databases"><span class="toc-section-number">6</span> Relational databases</a></li>
+<li><a href="7-thanks-for-visiting.html#thanks-for-visiting"><span class="toc-section-number">7</span> Thanks for visiting</a></li>
 </ul>
 </div>
 </div>
 </div>
 <div class="row">
 <div class="col-sm-12">
-<!--bookdown:title:end-->
-<!--bookdown:title:start-->
-<div id="c.elegans-experiment" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> C.elegans experiment</h1>
+<div id="c.elegans-experiment" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> C.elegans experiment</h1>
 <body id = "start">
 <div class="sidenav">
 <a href='index.html#Introduction'>Introduction</a>
@@ -178,12 +177,12 @@ details > summary {
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <p>And the data types of the variables RawData, compName and compConcentration:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="1-c.elegans-experiment.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#loading the excel file</span></span>
-<span id="cb4-2"><a href="1-c.elegans-experiment.html#cb4-2" aria-hidden="true" tabindex="-1"></a>exc1_1 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data_Raw/001_C.elegans_exp/CE.LIQ.FLOW.062_Tidydata.xlsx&quot;</span>)</span>
-<span id="cb4-3"><a href="1-c.elegans-experiment.html#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="1-c.elegans-experiment.html#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="1-c.elegans-experiment.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the data type of select columns</span></span>
-<span id="cb4-6"><a href="1-c.elegans-experiment.html#cb4-6" aria-hidden="true" tabindex="-1"></a>exc1_1 <span class="sc">%&gt;%</span> <span class="fu">select</span>(RawData, compName, compConcentration) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="2-c.elegans-experiment.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#loading the excel file</span></span>
+<span id="cb5-2"><a href="2-c.elegans-experiment.html#cb5-2" aria-hidden="true" tabindex="-1"></a>exc1_1 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data_Raw/001_C.elegans_exp/CE.LIQ.FLOW.062_Tidydata.xlsx&quot;</span>)</span>
+<span id="cb5-3"><a href="2-c.elegans-experiment.html#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="2-c.elegans-experiment.html#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="2-c.elegans-experiment.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the data type of select columns</span></span>
+<span id="cb5-6"><a href="2-c.elegans-experiment.html#cb5-6" aria-hidden="true" tabindex="-1"></a>exc1_1 <span class="sc">%&gt;%</span> <span class="fu">select</span>(RawData, compName, compConcentration) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 3
 ##   RawData compName                   compConcentration
 ##     &lt;dbl&gt; &lt;chr&gt;                      &lt;chr&gt;            
@@ -255,7 +254,8 @@ details > summary {
 
 </div>
 <p style="text-align: center;">
-<a href="2-guerilla-analytics.html"><button class="btn btn-default">Next</button></a>
+<a href="1-introduction.html"><button class="btn btn-default">Previous</button></a>
+<a href="3-guerilla-analytics.html"><button class="btn btn-default">Next</button></a>
 </p>
 </div>
 </div>
