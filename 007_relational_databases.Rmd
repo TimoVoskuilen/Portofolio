@@ -14,7 +14,7 @@ library(ggplot2)
 # Relational databases 
 
 
-## Intro {-}
+**Intro**
 
 This page is about datasets on flu and dengue occurrences between 2002 and 2015 as measured by Google Webservices "Google Flu Trends" and "Google Dengue Trends". These webservices track searches of the words flu and dengue in different countries and match them to occurrences of the diseases in these countries. The data will be compared to the "gapminder" dataset that is part of the R package dslabs.
 <br> <br> 
@@ -30,7 +30,7 @@ Datasets used: <br>
 - [gapminder](./data/data_raw/005_relational_databases/gapminder.csv)
 <br>
 
-## Cleaning up {-}
+**Cleaning up**
 
 Before any comparisons can be made the data must be tidied and the column types must be matching. <br>
 The gapminder dataset is also very large and includes a large number of years not present in the flu and dengue datasets. These years also need to be removed from the dataset. <br>
@@ -64,7 +64,7 @@ gapminder <- gapminder %>%
          )
 ```
 
-## Using DBeaver SQL {-}
+**Using DBeaver SQL**
 
 Following the cleaning of the data, the datasets need to be saved in R and uploaded to DBeaver for further review using the following commands:
 <br>
@@ -98,7 +98,7 @@ and using the console to get information from the data:
 ![DBeaverexample](./images/007_relational_databasesdBEAVER.png){width=100%}
 
 
-## Joining the data {-}
+**Joining the data**
 
 Getting information from tables and forming them into something useful for visualizing data can also be done using R.
 The Data needs to be joined together to make good informative figures. The next section shows how this was done followed by a preview of the newly formed table.
@@ -126,7 +126,7 @@ gap_flu_dengue_data <- inner_join(flu_dengue_data,
 knitr::kable(gap_flu_dengue_data %>% head(5))
 ```
 
-## Visualising the data {-}
+**Visualising the data**
 
 After the data is joined together in one table it can be udes to create some figures:
 <br> <br> 

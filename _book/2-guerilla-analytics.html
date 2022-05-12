@@ -147,14 +147,7 @@ details > summary {
 <li><a href="2-guerilla-analytics.html#guerilla-analytics"><span class="toc-section-number">2</span> Guerilla analytics</a></li>
 <li><a href="3-cv.html#cv"><span class="toc-section-number">3</span> CV</a></li>
 <li><a href="4-looking-ahead.html#looking-ahead"><span class="toc-section-number">4</span> Looking ahead</a></li>
-<li class="has-sub"><a href="5-relational-databases.html#relational-databases"><span class="toc-section-number">5</span> Relational databases</a>
-<ul>
-<li><a href="intro.html#intro">Intro</a></li>
-<li><a href="cleaning-up.html#cleaning-up">Cleaning up</a></li>
-<li><a href="using-dbeaver-sql.html#using-dbeaver-sql">Using DBeaver SQL</a></li>
-<li><a href="joining-the-data.html#joining-the-data">Joining the data</a></li>
-<li><a href="visualising-the-data.html#visualising-the-data">Visualising the data</a></li>
-</ul></li>
+<li><a href="5-relational-databases.html#relational-databases"><span class="toc-section-number">5</span> Relational databases</a></li>
 <li><a href="6-introduction.html#introduction"><span class="toc-section-number">6</span> Introduction</a></li>
 </ul>
 </div>
@@ -170,14 +163,10 @@ details > summary {
 <span id="cb4-2"><a href="2-guerilla-analytics.html#cb4-2" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_tree</span>(<span class="at">dir =</span> <span class="st">&quot;https://github.com/TimoVoskuilen/Portofolio/tree/main/data/data_Raw/003_data_management&quot;</span>)</span></code></pre></div>
 <pre><code>## .
 ## +-- 001_C.elegans_exp.Rmd
-## +-- 003_Guerillla_analytics.html
 ## +-- 003_Guerillla_analytics.Rmd
-## +-- 004_CV.html
 ## +-- 004_CV.Rmd
 ## +-- 005_looking_ahead.Rmd
-## +-- 007_relational_databases.html
 ## +-- 007_relational_databases.Rmd
-## +-- data
 ## +-- data_Raw
 ## |   +-- 001_C.elegans_exp
 ## |   |   +-- CE.LIQ.FLOW.062_Tidydata.xlsx
@@ -203,95 +192,11 @@ details > summary {
 ## +-- Portofolio.Rproj
 ## +-- README.md
 ## +-- _book
-## |   +-- 1-c.elegans-experiment.html
-## |   +-- 2-guerilla-analytics.html
-## |   +-- 3-cv.html
-## |   +-- 4-looking-ahead.html
-## |   +-- 404.html
-## |   +-- 5-relational-databases.html
-## |   +-- 5.1-intro.html
-## |   +-- 5.2-cleaning-up.html
-## |   +-- 5.3-using-dbeaver-sql.html
-## |   +-- 5.4-joining-the-data.html
-## |   +-- 5.5-visualising-the-data.html
-## |   +-- 6-introduction.html
-## |   +-- c.elegans-experiment.html
-## |   +-- cv-1.html
-## |   +-- cv.html
-## |   +-- data
-## |   |   \-- data_Raw
-## |   |       \-- 003_data_management
-## |   |           \-- Guerilla analytics framework daur2.png
-## |   +-- guerilla-analytics.html
-## |   +-- images
-## |   |   +-- 007_relational_databasesdBEAVER.png
-## |   |   +-- 007_relational_databasesSQL.png
-## |   |   +-- CV.png
-## |   |   \-- Guerilla_analytics_framework_daur2.png
-## |   +-- index.html
-## |   +-- introduction.html
-## |   +-- libs
-## |   |   +-- anchor-sections-1.1.0
-## |   |   |   +-- anchor-sections-hash.css
-## |   |   |   +-- anchor-sections.css
-## |   |   |   \-- anchor-sections.js
-## |   |   +-- bootstrap-3.3.5
-## |   |   |   +-- css
-## |   |   |   |   \-- bootstrap.min.css
-## |   |   |   +-- fonts
-## |   |   |   |   +-- glyphicons-halflings-regular.eot
-## |   |   |   |   +-- glyphicons-halflings-regular.svg
-## |   |   |   |   +-- glyphicons-halflings-regular.ttf
-## |   |   |   |   \-- glyphicons-halflings-regular.woff
-## |   |   |   +-- js
-## |   |   |   |   \-- bootstrap.min.js
-## |   |   |   \-- shim
-## |   |   |       +-- html5shiv.min.js
-## |   |   |       \-- respond.min.js
-## |   |   +-- gitbook-2.6.7
-## |   |   |   +-- css
-## |   |   |   |   +-- fontawesome
-## |   |   |   |   |   \-- fontawesome-webfont.ttf
-## |   |   |   |   +-- plugin-bookdown.css
-## |   |   |   |   +-- plugin-clipboard.css
-## |   |   |   |   +-- plugin-fontsettings.css
-## |   |   |   |   +-- plugin-highlight.css
-## |   |   |   |   +-- plugin-search.css
-## |   |   |   |   +-- plugin-table.css
-## |   |   |   |   \-- style.css
-## |   |   |   \-- js
-## |   |   |       +-- app.min.js
-## |   |   |       +-- clipboard.min.js
-## |   |   |       +-- jquery.highlight.js
-## |   |   |       +-- plugin-bookdown.js
-## |   |   |       +-- plugin-clipboard.js
-## |   |   |       +-- plugin-fontsettings.js
-## |   |   |       +-- plugin-search.js
-## |   |   |       \-- plugin-sharing.js
-## |   |   +-- jquery-3.6.0
-## |   |   |   \-- jquery-3.6.0.min.js
-## |   |   \-- navigation-1.1
-## |   |       \-- tabsets.js
-## |   +-- looking-ahead.html
-## |   +-- search_index.json
-## |   \-- _main_files
-## |       \-- figure-html
-## |           +-- data visualisation 1-1.png
-## |           +-- data visualisation 2-1.png
-## |           +-- data visualisation 3-1.png
-## |           +-- normalized-1.png
-## |           +-- unnamed-chunk-3-1.png
-## |           \-- unnamed-chunk-5-1.png
-## +-- _bookdown_files
 ## +-- _main.Rmd
 ## \-- _main_files
 ##     \-- figure-html
-##         +-- data visualisation 1-1.png
-##         +-- data visualisation 2-1.png
-##         +-- data visualisation 3-1.png
 ##         +-- normalized-1.png
-##         +-- unnamed-chunk-3-1.png
-##         \-- unnamed-chunk-5-1.png</code></pre>
+##         \-- unnamed-chunk-3-1.png</code></pre>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="2-guerilla-analytics.html#cb6-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;./images/Guerilla_analytics_framework_daur2.png&quot;</span>)</span></code></pre></div>
 <p><img src="images/Guerilla_analytics_framework_daur2.png" width="224" /></p>
 
