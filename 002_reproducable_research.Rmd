@@ -1,6 +1,6 @@
 # Reproducable research
 
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 library(tidyverse)
 library(ggrepel)
 library(scales)

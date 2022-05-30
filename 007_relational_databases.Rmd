@@ -1,4 +1,4 @@
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 library(tidyverse)
 library(rMEA)
 library(ggplot2)
@@ -17,16 +17,10 @@ library(ggplot2)
 
 This page is about datasets on flu and dengue occurrences between 2002 and 2015 as measured by Google Webservices "Google Flu Trends" and "Google Dengue Trends". These webservices track searches of the words flu and dengue in different countries and match them to occurrences of the diseases in these countries. The data will be compared to the "gapminder" dataset that is part of the R package dslabs.
 <br> <br> 
-Data Source: <br>
-(Google sites are unfortunately no longer operational) <br>
-- Google Flu Trends (http://www.google.org/flutrends) <br>
-- Google Dengue Trends (http://www.google.org/denguetrends) <br>
-- [dslabs package](https://www.rdocumentation.org/packages/dslabs/versions/0.7.4)
-<br> <br> 
 Datasets used: <br>
-- [Flu data](./data/data_raw/005_relational_databases/flu_data.csv) <br>
-- [Dengue data](./data/data_raw/005_relational_databases/dengue_data.csv) <br>
-- [gapminder](./data/data_raw/005_relational_databases/gapminder.csv)
+- [Flu data](./data_Raw/007_relational_databases/flu_data.csv) <br>
+- [Dengue data](./data_Raw/007_relational_databases/dengue_data.csv) <br>
+- [gapminder](./data_Raw/007_relational_databases/gapminder.csv)
 <br>
 
 **Cleaning up**
@@ -39,7 +33,6 @@ The next section will show how this was achieved:
 # Load the datasets into R datframes
 flu_data <- read.csv('data_Raw/007_relational_databases/flu_data.csv', skip = 11) %>% as_tibble()
 dengue_data <- read.csv("data_Raw/007_relational_databases/dengue_data.csv", skip = 11) %>% as_tibble()
-
 gapminder <- dslabs::gapminder %>% as_tibble()
 # Tidy the flu_data and dengue_data datasets
 flu_data <- flu_data %>% 
@@ -75,7 +68,6 @@ write.csv(gapminder, "data_Raw/007_relational_databases/gapminder.csv")
 write_rds(flu_data, "data_Raw/007_relational_databases/flu_data_tidy.rds")
 write_rds(dengue_data, "data_Raw/007_relational_databases/dengue_data_tidy.rds")
 write_rds(gapminder, "data_Raw/007_relational_databases/gapminder.rds")
-
 #Upload the data to DBeaver
 dbWriteTable(con, "flu_data",
              flu_data,

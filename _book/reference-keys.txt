@@ -1,6 +1,8 @@
 c.elegans-experiment
+reproducable-research
 guerilla-analytics
 cv
 looking-ahead
-relational-databases
+zotero-reference-management
+making-a-parameterized-markdown
 introduction

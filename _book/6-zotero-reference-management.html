@@ -5,7 +5,7 @@
 <meta charset="utf-8" />
 <meta name="generator" content="pandoc" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="Index" />
+<meta property="og:title" content="6 Zotero reference management | Index" />
 <meta property="og:type" content="book" />
 
 
@@ -14,9 +14,9 @@
 
 
 
-<meta name="description" content="Index">
+<meta name="description" content="6 Zotero reference management | Index">
 
-<title>Index</title>
+<title>6 Zotero reference management | Index</title>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -158,90 +158,16 @@ details > summary {
 </div>
 <div class="row">
 <div class="col-sm-12">
-<div id="header">
-<h1 class="title">Index</h1>
-</div>
-<div id="c.elegans-experiment" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> C.elegans experiment</h1>
-<p>The data types of the variables RawData, compName and compConcentration:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="1-c.elegans-experiment.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#loading the excel file</span></span>
-<span id="cb1-2"><a href="1-c.elegans-experiment.html#cb1-2" aria-hidden="true" tabindex="-1"></a>exc1_1 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data_Raw/001_C.elegans_exp/CE.LIQ.FLOW.062_Tidydata.xlsx&quot;</span>)</span>
-<span id="cb1-3"><a href="1-c.elegans-experiment.html#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="1-c.elegans-experiment.html#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="1-c.elegans-experiment.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the data type of select columns</span></span>
-<span id="cb1-6"><a href="1-c.elegans-experiment.html#cb1-6" aria-hidden="true" tabindex="-1"></a>exc1_1 <span class="sc">%&gt;%</span> <span class="fu">select</span>(RawData, compName, compConcentration) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 3
-##   RawData compName                   compConcentration
-##     &lt;dbl&gt; &lt;chr&gt;                      &lt;chr&gt;            
-## 1      44 2,6-diisopropylnaphthalene 4.99</code></pre>
-<p>It would be expected that the data types of the columns are dbl, chr and dbl. compConcentration however, has the datatype chr. This means the format was imported incorrectly making it difficult to analyse the data.</p>
-<p>after transforming the compConcentration data to double, the data was plotted in a scatterplot graph with the data for the different compounds on the y-axis (RawData) and the varying concentrations on the x-axis (compConcentration). Each variable got a colour matching the compName and a symbol matching the expType column-values. Jitter and log10 scaling of the X axis was added, for the “correct” graph</p>
-<pre><code>## Warning: Removed 5 rows containing missing values (geom_point).</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<p>Figure 1: Scatterplot displaying the amount of offspring at different concentrations per compound (colour) and experiment type (symbol)</p>
-<p>The positive control for this experiments is ethanol. The negative control for this experiment is S-medium.</p>
-<p>To analyze this experiment and learn whether there is an effect of different concentrations on offspring count and the effects of different compounds i would take these steps:
--group data per compound
--check if data is normally distributed
--Use the appropriate statistical tests on the data to see if there is a significant difference in offspring count when using different concentrations of compounds
--Calculate IC50 and create a plot of the curve</p>
-<p>For the next visualization I have normalized the data for the controlNegative in such a way that the mean value for controlNegative is exactly equal to 1 and that all other values are expressed as a fraction thereof.</p>
-<pre><code>## `summarise()` has grouped output by &#39;expType&#39;, &#39;compName&#39;. You can override using the `.groups` argument.</code></pre>
-<table>
-<colgroup>
-<col width="18%" />
-<col width="31%" />
-<col width="21%" />
-<col width="28%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">expType</th>
-<th align="left">compName</th>
-<th align="right">compConcentration</th>
-<th align="right">mean_RawData_normalized</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">controlNegative</td>
-<td align="left">S-medium</td>
-<td align="right">0.00e+00</td>
-<td align="right">1.0000000</td>
-</tr>
-<tr class="even">
-<td align="left">controlPositive</td>
-<td align="left">Ethanol</td>
-<td align="right">1.50e+00</td>
-<td align="right">0.5750873</td>
-</tr>
-<tr class="odd">
-<td align="left">controlVehicleA</td>
-<td align="left">Ethanol</td>
-<td align="right">5.00e-01</td>
-<td align="right">1.0690726</td>
-</tr>
-<tr class="even">
-<td align="left">experiment</td>
-<td align="left">2,6-diisopropylnaphthalene</td>
-<td align="right">4.99e-05</td>
-<td align="right">1.0391929</td>
-</tr>
-<tr class="odd">
-<td align="left">experiment</td>
-<td align="left">2,6-diisopropylnaphthalene</td>
-<td align="right">4.99e-04</td>
-<td align="right">0.9670159</td>
-</tr>
-</tbody>
-</table>
-<p><img src="_main_files/figure-html/normalized-1.png" width="672" /></p>
-<p>Figure 4: Scatterplot displaying the amount of offspring at different concentrations per compound (colour) and experiment type (symbol) normalized on the negative control.</p>
-<p>this step was taken to get the result in relation to the “0” value, the amount of offspring from without any compound.</p>
+<div id="zotero-reference-management" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Zotero reference management</h1>
+<p><strong><em>introduction to our project</em></strong></p>
+<p>For our DSFB2 project, we are going to build a shiny app that enables researchers from the Princess Maxima Center to organize the layout files.</p>
+<p>The prinses maxima center tests the effects that different drugs have on tumor cells by using high throughput screening. Files that contain the data per well from theses screenings are generated in an automated process. Also created are layout files that describe the different conditions used in every well. This is, however, not an automated processs and is still done by hand. The aim of our project is to create a user-friendly shiny app that lets a person create these layout files smoother and quicker.</p>
 
 </div>
 <p style="text-align: center;">
-<a href="2-reproducable-research.html"><button class="btn btn-default">Next</button></a>
+<a href="5-looking-ahead.html"><button class="btn btn-default">Previous</button></a>
+<a href="7-making-a-parameterized-markdown.html"><button class="btn btn-default">Next</button></a>
 </p>
 </div>
 </div>
