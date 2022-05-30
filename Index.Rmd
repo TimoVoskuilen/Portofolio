@@ -8,7 +8,6 @@ output:
     theme: flatly
 ---
 # Introduction
-<!DOCTYPE HTML>
 <html>
 	<head>
 		<title>Portfolio</title>

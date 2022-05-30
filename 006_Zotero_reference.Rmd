@@ -2,7 +2,9 @@
 
 ***introduction to our project***
 
+For our DSFB2 project, we are going to build a shiny app that enables researchers from the Princess Maxima Center to organize the layout files. 
 
+The prinses maxima center tests the effects that different drugs have on tumor cells by using high throughput screening. Files that contain the data per well from theses screenings are generated in an automated process. Also created are layout files that describe the different conditions used in every well. This is, however, not an automated processs and is still done by hand. The aim of our project is to create a user-friendly shiny app that lets a person create these layout files smoother and quicker.
 
 
 
