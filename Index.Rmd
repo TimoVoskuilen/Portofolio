@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "Index"
 site: bookdown::bookdown_site
 documentclass: book
 css: style.css
@@ -7,16 +7,216 @@ output:
   bookdown::html_book:
     theme: flatly
 ---
-<body id = "start">
-<div class="sidenav">
-  <a href='index.html#Introduction'>Introduction</a>
-  <a href='1-c.elegans-experiment#data-visualisation'>Data visualisation</a>
-  <a href='open_peer_review.html#open peer review'>Peer review</a>
-  <a href='3-cv#CV'>CV</a>
-  <a href='4-looking-ahead#Looking ahead'>Looking ahead</a>
-  <a href='5-relational-databases#relational databases'>relational databases</a>
- </div>
- 
-# Thanks for visiting
+# Introduction
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
 
-Goodbye.
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Intro -->
+					<div id="intro">
+						<h1>My portfolio<br />
+						<p>A showcase of my projects and abilities in the field of data sciences</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">About me</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href="index.html">Portfolio</a></li>
+							<li><a href="generic.html">Open science</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/timo-voskuilen-aa5728174/" class="icon brands fa-linkedin"><span class="label">Instagram</span></a></li>
+							<li><a href="https://github.com/TimoVoskuilen" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Featured Post -->
+							<article class="post featured">
+								<header class="major">
+									<span class="date">June 12, 2022</span>
+									<h2><a href="#">Hi and welcome,<br />
+									I am Timo Voskuilen</a></h2>
+									<p>I am a 22 year old life sciences student at the university of applied sciences at the Hogeschool Utrecht. I am specified in biomedical research and thrive to find a career in the field of oncology. I am currently in the process of becoming a data scientist, I am following a course called Data science for biology at the Hogeschool Utrecht, where im learning do statistical analysis with bash and R.</p>
+								</header>
+								<a href="#" class="image main"><img src="_book/images/pic01.jpg" alt="" /></a>
+								<ul class="actions special">
+									<li><a href="#" class="button large">Portfolio</a></li>
+								</ul>
+							</article>
+
+						<!-- Posts -->
+							<section class="posts">
+								<article>
+									<header>
+										<h2><a href="_book/1-c.elegans-experiment.html">Data<br />
+										Visualization</a></h2>
+									</header>
+									<a href="_book/1-c.elegans-experiment.html" class="image fit"><img src="_book/images/pic02.png" alt="" /></a>
+									<p>Here I show my capability of making complex data visuable to the common reader.</p>
+									<ul class="actions special">
+										<li><a href="_book/1-c.elegans-experiment.html" class="button">See for yourself</a></li>
+									</ul>
+								</article>
+								<article>
+									<header>
+										<h2><a href="_book/1-c.elegans-experiment.html">reproducible<br />
+										research</a></h2>
+									</header>
+									<a href="_book/1-c.elegans-experiment.html" class="image fit"><img src="_book/images/pic02.png" alt="" /></a>
+									<p>Reproducibility means that research data and code are made available so that others are able to reach the same results as claimed in scientific outputs.</p>
+									<ul class="actions special">
+										<li><a href="_book/1-c.elegans-experiment.html" class="button">See for yourself</a></li>
+									</ul>
+								</article>
+								<article>
+									<header>
+										<h2><a href="_book/2-guerilla-analytics.html"> structural Data<br />
+										       management</a></h2>
+									</header>
+									<a href="_book/2-guerilla-analytics.html" class="image fit"><img src="_book/images/pic03.jpg" alt="" /></a>
+									<p>Here I will show you my ability to keep an organized folder structure following the Guerilla protocol			 </p>
+									<ul class="actions special">
+										<li><a href="_book/2-guerilla-analytics.html" class="button">See for yourself</a></li>
+									</ul>
+								</article>
+								<article>
+									<header>
+										<h2><a href="_book/3-cv.html">my Curriculum<br />
+										vitae</a></h2>
+									</header>
+									<a href="_book/3-cv.html" class="image fit"><img src="_book/images/pic04.jpg" alt="" /></a>
+									<p>Click for my Curriculum vitae.</p>
+									<ul class="actions special">
+										<li><a href="_book/3-cv.html" class="button">See for yourself</a></li>
+									</ul>
+								</article>
+								<article>
+									<header>
+										<h2><a href="_book/4-looking-ahead.html">Looking<br />
+										in to the future</a></h2>
+									</header>
+									<a href="_book/4-looking-ahead.html" class="image fit"><img src="_book/images/pic05.jpg" alt="" /></a>
+									<p></p>
+									<ul class="actions special">
+										<li><a href="_book/4-looking-ahead.html" class="button">See for yourself</a></li>
+									</ul>
+								</article>
+								<article>
+									<header>
+										<h2><a href="_book/5-relational-databases.html">relational<br />
+										databases</a></h2>
+									</header>
+									<a href="_book/5-relational-databases.html" class="image fit"><img src="_book/images/pic06.jpg" alt="" /></a>
+									<p></p>
+									<ul class="actions special">
+										<li><a href="_book/5-relational-databases.html" class="button">See for yourself</a></li>
+									</ul>
+								</article>
+								<article>
+									<header>
+										<h2><a href="_book/2-guerilla-analytics.html">Creating my<br />
+										own R package</a></h2>
+									</header>
+									<a href="_book/2-guerilla-analytics.html" class="image fit"><img src="_book/images/pic07.jpg" alt="" /></a>
+									<p></p>
+									<ul class="actions special">
+										<li><a href="_book/2-guerilla-analytics.html" class="button">See for yourself</a></li>
+									</ul>
+								</article>
+							</article>
+							<article>
+								<header>
+									<h2><a href="_book/2-guerilla-analytics.html">ECDC<br />
+									Covid analysis</a></h2>
+								</header>
+								<a href="_book/2-guerilla-analytics.html" class="image fit"><img src="_book/images/pic07.jpg" alt="" /></a>
+								<p></p>
+								<ul class="actions special">
+									<li><a href="_book/2-guerilla-analytics.html" class="button">See for yourself</a></li>
+								</ul>
+							</article>
+							</section>
+
+						<!-- Footer -->
+							<footer>
+								<div class="pagination">
+									<!--<a href="#" class="previous">Prev</a>-->
+									<a href="#" class="page active">1</a>
+								</div>
+							</footer>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<form method="post" action="#">
+								<div class="fields">
+									<div class="field">
+										<label for="name">Name</label>
+										<input type="text" name="name" id="name" />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="text" name="email" id="email" />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="3"></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Send Message" /></li>
+								</ul>
+							</form>
+						</section>
+						<section class="split contact">
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">timo.voskuilen@student.hu.nl</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="https://www.linkedin.com/in/timo-voskuilen-aa5728174/" class="icon brands fa-linkedin"><span class="label">Instagram</span></a></li>
+									<li><a href="https://github.com/TimoVoskuilen" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
