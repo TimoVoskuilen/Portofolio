@@ -1,22 +1,12 @@
 # C.elegans experiment
-<body id = "start">
-<div class="sidenav">
-  <a href='index.html#Introduction'>Introduction</a>
-  <a href='1-c.elegans-experiment#data-visualisation'>Data visualisation</a>
-  <a href='open_peer_review.html#open peer review'>Peer review</a>
-  <a href='3-cv#CV'>CV</a>
-  <a href='4-looking-ahead#Looking ahead'>Looking ahead</a>
-  <a href='5-relational-databases#relational databases'>relational databases</a>
- </div>
- 
- 
 ```{r, echo = FALSE}
 library("tidyverse")
 library("ggplot2")
 library("readxl")
 ```
 
-And the data types of the variables RawData, compName and compConcentration:
+The data types of the variables RawData, compName and compConcentration:
+
 ```{r 1.1.c, warning = FALSE}
 #loading the excel file
 exc1_1 <- read_excel("data_Raw/001_C.elegans_exp/CE.LIQ.FLOW.062_Tidydata.xlsx")

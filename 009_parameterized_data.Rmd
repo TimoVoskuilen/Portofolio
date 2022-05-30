@@ -1,0 +1,45 @@
+---
+Title: "Test parameter"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+params:
+  data: "Spain"
+---
+
+# Making a parameterized markdown
+
+To show that I can work with parameterization in my Markdowns, I downloaded the covid-19 data from the ECDC website and made a parameterized Rmardown.
+
+```{r loading the packages, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(here)
+library(ggplot2)
+```
+
+```{r reading in the covid-19 data, message=FALSE, warning=FALSE}
+covid_19_data <- read_csv("data_Raw/009_parameterized_data/Covid_19.csv")
+```
+
+```{r making an object of the country, message=FALSE, warning=FALSE, include=FALSE, eval=FALSE}
+country <- params$data
+```
+
+```{r visualising the covid-19 cases, message=FALSE, warning=FALSE, eval=FALSE}
+covid_19_data %>% group_by(day, month, year) %>% filter(countriesAndTerritories == params$data) %>%
+  ggplot(aes(x = month, y = cases)) +
+  geom_point() +
+  scale_x_continuous(breaks = seq(1, 12, 1)) +
+  labs(title = paste0("COVID-19 cases in ", country),
+       x = "Month",
+       y = "COVID-19 cases")
+```
+
+```{r visualising the covid-19 related deaths, message=FALSE, warning=FALSE, eval=FALSE}
+covid_19_data %>% group_by(day, month, year) %>% filter(countriesAndTerritories == params$data) %>%
+  ggplot(aes(x = month, y = deaths)) +
+  geom_point() +
+  scale_x_continuous(breaks = seq(1, 12, 1)) +
+  labs(title = paste0("COVID-19 related deaths in ", country),
+       x = "Month",
+       y = "COVID-19 related deaths")
+```

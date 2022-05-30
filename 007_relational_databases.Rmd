@@ -12,15 +12,6 @@ library(ggplot2)
 ```
 
 # Relational databases 
-<body id = "start">
-<div class="sidenav">
-  <a href='index.html#Introduction'>Introduction</a>
-  <a href='1-c.elegans-experiment#data-visualisation'>Data visualisation</a>
-  <a href='open_peer_review.html#open peer review'>Peer review</a>
-  <a href='3-cv#CV'>CV</a>
-  <a href='4-looking-ahead#Looking ahead'>Looking ahead</a>
-  <a href='5-relational-databases#relational databases'>relational databases</a>
- </div>
 
 **Intro**
 
@@ -171,9 +162,9 @@ dengue_region <- gap_flu_dengue_data %>% ggplot() +
 grid.arrange(flu_region, dengue_region, nrow = 1)
 ```
 <br>
-The data shows that dengue is most common in South America and South-Eastern Asia. It also has some presence in Central America and Southern Asia but not so much in other regions.
+The data shows that dengue is most common in South America and central america. It also has some presence in south-Eastern Asia and Southern Asia but not so much in other regions.
 <br>
-Flu appears to be most common in Eastern Europe, Western Europe and Northern America. Regions where it's not very common are North- and Southern Europe and South America
+Flu appears to be most common in central america, South America, Eastern Europe, Western Europe and Northern America. Regions where it's not very common are North- and Southern Europe and South America
 <br> <br>
 The second graph will portray the occurrences of flu and dengue in the Netherlands over the period of 2002 to 2015.
 <br>
@@ -212,7 +203,7 @@ dengue_region <- gap_flu_dengue_data %>%
 grid.arrange(flu_region, dengue_region, nrow = 1)
 ```
 <br> 
-The flu had its most occurrences in 2009 and 2013 and its least in 2004 and 2010. There is no flu data for 2002 and 2003. This could be because of a lack of data in these years. <br>
+The flu had its most occurrences in 2009 and 2013 and its least in 2004 and 2010. There is no flu data for 2002. This could be because of a lack of data in these years. <br>
 The data shows that Dengue has had no occurrences in the Netherlands between 2002 and 2015.
 <br> <br> 
 The third and last graph will show the worldwide occurrences of flu and dengue on a year to year basis. Showing what years these diseases were most common.

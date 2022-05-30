@@ -1,14 +1,5 @@
 # Looking ahead
-<body id = "start">
-<div class="sidenav">
-  <a href='index.html#Introduction'>Introduction</a>
-  <a href='1-c.elegans-experiment#data-visualisation'>Data visualisation</a>
-  <a href='open_peer_review.html#open peer review'>Peer review</a>
-  <a href='3-cv#CV'>CV</a>
-  <a href='4-looking-ahead#Looking ahead'>Looking ahead</a>
-  <a href='5-relational-databases#relational databases'>relational databases</a>
- </div>
- 
+
  
 In 2 years time I want to be working as a data scientist specializing in data engineering. My first big step and also my first big inspiration in regards to bioinformatics and data science is creating this digital portfolio as a result of the minor Data Science For Biology.
 
