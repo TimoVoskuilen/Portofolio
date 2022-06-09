@@ -5,5 +5,7 @@ cv
 looking-ahead
 zotero-reference-management
 relational-databases
+creating-r-package
 making-a-parameterized-markdown
-end-page
+free-space
+frontpage

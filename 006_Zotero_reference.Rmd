@@ -2,9 +2,21 @@
 
 ***introduction to our project***
 
-For our DSFB2 project, we are going to build a shiny app that enables researchers from the Princess Maxima Center to organize the layout files. 
+High throughput drug screening princes maxima centrum:
 
-The prinses maxima center tests the effects that different drugs have on tumor cells by using high throughput screening. Files that contain the data per well from theses screenings are generated in an automated process. Also created are layout files that describe the different conditions used in every well. This is, however, not an automated processs and is still done by hand. The aim of our project is to create a user-friendly shiny app that lets a person create these layout files smoother and quicker.
+High throughput drug screening@entzerothOverviewHighthroughputScreening2009 (HTS) is a method for scientific experimentation especially used in drug discovery@hughesPrinciplesEarlyDrug2011. Using robotics high throughput drug screening allows researchers to quickly conduct millions of chemical, genetic or pharmacological tests. Through this process, genes, compounds or antibodys that modulate a particular pathway can easily be recognized.
+
+**How does it work:**
+
+Usually 384 well microplates are used for drug screening. This allows the researchers to, if they wish to, screen 384 different drugs in one plate. Firstly the researcher fiills the plate with some biological entity that they wish to experiment on. Examples are protein, cells, or an animal embryo@yangHighThroughputMethodsDiscovery2021. After some time has passed to allow the biological matter to absorb, bind or otherwise react with the compound in the wells, measurements are taken across all the plates. A few examples of measurements that happen are: MTT assay, which measures the mitochondrial activity to measure cell metabolic activity, which can be translated to cell viability.  ATP cell viability, which uses ATP to produce light which can be measured which translates to cell viability or shining polarized light on the biological matter measuring reflectivity, which indicates protein binding.
+
+**Princes maxima center:**
+Our project was in collaboration with the princes maxima center. Princes maxima center, opened on June 5th 2018, is located at the Utrecht Science Park. It is the national center for pediatric oncology@davidoffPediatricOncology2010 in which care, scientific research and education in the field of cancer in children are integrated. It is a unique center because it takes care of all the children with cancer in the Netherlands. There mission is to cure every type of cancer, with optimal quality of life. 
+
+We are working with the group that is responsible for the high throughput drug screening facility. Where they try to identify connections between drugs and specific genomic markers@garnettSystematicIdentificationGenomic2012. They try to understand why a patient responds to a certain drug, and why others don’t. A high throughput drug screening facility is perfect for this, because u can screen a lot of drugs, in a lot of different concentrations on the cells of patients, fully automated with a robot@lauVitroVivoDrug2021; @wongDrugScreeningCancer2017. 
+
+For this robot to work, it needs a plate layout, this is a file that states per well: Drug, R2ID (drug identifier) Concentration, Cells, Type and Control. This file was made by hand and this was a very tedious and time consuming  task. So the princes maxima center asked us to make a user friendly R shiny@wojciechowskiInteractivePharmacometricApplications2015 web application which makes the creation of the layout files easy. 
+
 
 
 

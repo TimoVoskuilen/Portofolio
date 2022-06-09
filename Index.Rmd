@@ -6,8 +6,10 @@ css: style.css
 output:
   bookdown::html_book:
     theme: flatly
+bibliography: references.bib
 ---
-# end page
+
+# frontpage
 <!DOCTYPE HTML>
 <html>
 	<head>

@@ -5,7 +5,7 @@
 <meta charset="utf-8" />
 <meta name="generator" content="pandoc" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="8 Making a parameterized markdown | Index" />
+<meta property="og:title" content="9 Making a parameterized markdown | Index" />
 <meta property="og:type" content="book" />
 
 
@@ -14,9 +14,9 @@
 
 
 
-<meta name="description" content="8 Making a parameterized markdown | Index">
+<meta name="description" content="9 Making a parameterized markdown | Index">
 
-<title>8 Making a parameterized markdown | Index</title>
+<title>9 Making a parameterized markdown | Index</title>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -151,40 +151,42 @@ details > summary {
 <li><a href="5-looking-ahead.html#looking-ahead"><span class="toc-section-number">5</span> Looking ahead</a></li>
 <li><a href="6-zotero-reference-management.html#zotero-reference-management"><span class="toc-section-number">6</span> Zotero reference management</a></li>
 <li><a href="7-relational-databases.html#relational-databases"><span class="toc-section-number">7</span> Relational databases</a></li>
-<li><a href="8-making-a-parameterized-markdown.html#making-a-parameterized-markdown"><span class="toc-section-number">8</span> Making a parameterized markdown</a></li>
-<li><a href="9-end-page.html#end-page"><span class="toc-section-number">9</span> end page</a></li>
+<li><a href="8-creating-r-package.html#creating-r-package"><span class="toc-section-number">8</span> Creating R package</a></li>
+<li><a href="9-making-a-parameterized-markdown.html#making-a-parameterized-markdown"><span class="toc-section-number">9</span> Making a parameterized markdown</a></li>
+<li><a href="10-free-space.html#free-space"><span class="toc-section-number">10</span> Free space</a></li>
+<li><a href="11-frontpage.html#frontpage"><span class="toc-section-number">11</span> frontpage</a></li>
 </ul>
 </div>
 </div>
 </div>
 <div class="row">
 <div class="col-sm-12">
-<div id="making-a-parameterized-markdown" class="section level1" number="8">
-<h1><span class="header-section-number">8</span> Making a parameterized markdown</h1>
+<div id="making-a-parameterized-markdown" class="section level1" number="9">
+<h1><span class="header-section-number">9</span> Making a parameterized markdown</h1>
 <p>To show that I can work with parameterization in my Markdowns, I downloaded the covid-19 data from the ECDC website and made a parameterized Rmardown.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="8-making-a-parameterized-markdown.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb19-2"><a href="8-making-a-parameterized-markdown.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb19-3"><a href="8-making-a-parameterized-markdown.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="8-making-a-parameterized-markdown.html#cb20-1" aria-hidden="true" tabindex="-1"></a>covid_19_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data_Raw/009_parameterized_data/Covid_19.csv&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="8-making-a-parameterized-markdown.html#cb21-1" aria-hidden="true" tabindex="-1"></a>covid_19_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(day, month, year) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(countriesAndTerritories <span class="sc">==</span> params<span class="sc">$</span>data) <span class="sc">%&gt;%</span></span>
-<span id="cb21-2"><a href="8-making-a-parameterized-markdown.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> cases)) <span class="sc">+</span></span>
-<span id="cb21-3"><a href="8-making-a-parameterized-markdown.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb21-4"><a href="8-making-a-parameterized-markdown.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">12</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb21-5"><a href="8-making-a-parameterized-markdown.html#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">&quot;COVID-19 cases in &quot;</span>, country),</span>
-<span id="cb21-6"><a href="8-making-a-parameterized-markdown.html#cb21-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Month&quot;</span>,</span>
-<span id="cb21-7"><a href="8-making-a-parameterized-markdown.html#cb21-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;COVID-19 cases&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="8-making-a-parameterized-markdown.html#cb22-1" aria-hidden="true" tabindex="-1"></a>covid_19_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(day, month, year) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(countriesAndTerritories <span class="sc">==</span> params<span class="sc">$</span>data) <span class="sc">%&gt;%</span></span>
-<span id="cb22-2"><a href="8-making-a-parameterized-markdown.html#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> deaths)) <span class="sc">+</span></span>
-<span id="cb22-3"><a href="8-making-a-parameterized-markdown.html#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb22-4"><a href="8-making-a-parameterized-markdown.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">12</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb22-5"><a href="8-making-a-parameterized-markdown.html#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">&quot;COVID-19 related deaths in &quot;</span>, country),</span>
-<span id="cb22-6"><a href="8-making-a-parameterized-markdown.html#cb22-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Month&quot;</span>,</span>
-<span id="cb22-7"><a href="8-making-a-parameterized-markdown.html#cb22-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;COVID-19 related deaths&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="9-making-a-parameterized-markdown.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb39-2"><a href="9-making-a-parameterized-markdown.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb39-3"><a href="9-making-a-parameterized-markdown.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="9-making-a-parameterized-markdown.html#cb40-1" aria-hidden="true" tabindex="-1"></a>covid_19_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data_Raw/009_parameterized_data/Covid_19.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="9-making-a-parameterized-markdown.html#cb41-1" aria-hidden="true" tabindex="-1"></a>covid_19_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(day, month, year) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(countriesAndTerritories <span class="sc">==</span> params<span class="sc">$</span>data) <span class="sc">%&gt;%</span></span>
+<span id="cb41-2"><a href="9-making-a-parameterized-markdown.html#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> cases)) <span class="sc">+</span></span>
+<span id="cb41-3"><a href="9-making-a-parameterized-markdown.html#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb41-4"><a href="9-making-a-parameterized-markdown.html#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">12</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb41-5"><a href="9-making-a-parameterized-markdown.html#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">&quot;COVID-19 cases in &quot;</span>, country),</span>
+<span id="cb41-6"><a href="9-making-a-parameterized-markdown.html#cb41-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Month&quot;</span>,</span>
+<span id="cb41-7"><a href="9-making-a-parameterized-markdown.html#cb41-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;COVID-19 cases&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="9-making-a-parameterized-markdown.html#cb42-1" aria-hidden="true" tabindex="-1"></a>covid_19_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(day, month, year) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(countriesAndTerritories <span class="sc">==</span> params<span class="sc">$</span>data) <span class="sc">%&gt;%</span></span>
+<span id="cb42-2"><a href="9-making-a-parameterized-markdown.html#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> deaths)) <span class="sc">+</span></span>
+<span id="cb42-3"><a href="9-making-a-parameterized-markdown.html#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb42-4"><a href="9-making-a-parameterized-markdown.html#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">12</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb42-5"><a href="9-making-a-parameterized-markdown.html#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">&quot;COVID-19 related deaths in &quot;</span>, country),</span>
+<span id="cb42-6"><a href="9-making-a-parameterized-markdown.html#cb42-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Month&quot;</span>,</span>
+<span id="cb42-7"><a href="9-making-a-parameterized-markdown.html#cb42-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;COVID-19 related deaths&quot;</span>)</span></code></pre></div>
 
 </div>
 <p style="text-align: center;">
-<a href="7-relational-databases.html"><button class="btn btn-default">Previous</button></a>
-<a href="9-end-page.html"><button class="btn btn-default">Next</button></a>
+<a href="8-creating-r-package.html"><button class="btn btn-default">Previous</button></a>
+<a href="10-free-space.html"><button class="btn btn-default">Next</button></a>
 </p>
 </div>
 </div>

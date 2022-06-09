@@ -1,0 +1,43 @@
+# Creating R package
+
+```{r, include=FALSE}
+library(tidyverse)
+library(devtools)
+library(neattools)
+```
+
+To prove my abilitiy to create an R package, I have created a package called "neattools", neattools is a package that helps you manipulate data in a dataframe.
+
+```{r, eval = FALSE}
+devtools::install_github("timovoskuilen/neattools", build_vignettes = TRUE)
+```
+
+for the creation of this package, the mtcars dataset, which is a build in R dataset, is used. Also, attached to the package is a dataset called layout, which is a dataset containing a made up 384 wells plate layout for drug screening.
+
+__Functions__
+
+This package includes 4 functions, which will all be shown including examples below.
+
+The function __flip__ flips the columns and rows from a dataframe:
+```{r, message = FALSE}
+head(mtcars, n = 2)
+flip(head(mtcars, n = 2))
+```
+
+the function __ removecolumn__ lets you remove a specific column from a dataframe
+```{r, message = FALSE}
+head(layout, n = 2)
+removecolumn(head(layout, n =2), "Drug")
+```
+
+the function __subset__ lets you subset specific rows from a  dataframe
+```{r, message = FALSE}
+head(layout, n = 2)
+subset(head(layout, n = 2), 1)
+```
+
+the function __replacevalue__ lets you replace a specific value in a dataframe
+```{r, message = FALSE}
+head(layout, n = 5)
+replacevalue(head(layout, n = 5), "Drug", "Analyfyn", "Test")
+```

@@ -151,8 +151,10 @@ details > summary {
 <li><a href="5-looking-ahead.html#looking-ahead"><span class="toc-section-number">5</span> Looking ahead</a></li>
 <li><a href="6-zotero-reference-management.html#zotero-reference-management"><span class="toc-section-number">6</span> Zotero reference management</a></li>
 <li><a href="7-relational-databases.html#relational-databases"><span class="toc-section-number">7</span> Relational databases</a></li>
-<li><a href="8-making-a-parameterized-markdown.html#making-a-parameterized-markdown"><span class="toc-section-number">8</span> Making a parameterized markdown</a></li>
-<li><a href="9-end-page.html#end-page"><span class="toc-section-number">9</span> end page</a></li>
+<li><a href="8-creating-r-package.html#creating-r-package"><span class="toc-section-number">8</span> Creating R package</a></li>
+<li><a href="9-making-a-parameterized-markdown.html#making-a-parameterized-markdown"><span class="toc-section-number">9</span> Making a parameterized markdown</a></li>
+<li><a href="10-free-space.html#free-space"><span class="toc-section-number">10</span> Free space</a></li>
+<li><a href="11-frontpage.html#frontpage"><span class="toc-section-number">11</span> frontpage</a></li>
 </ul>
 </div>
 </div>
@@ -162,8 +164,14 @@ details > summary {
 <div id="zotero-reference-management" class="section level1" number="6">
 <h1><span class="header-section-number">6</span> Zotero reference management</h1>
 <p><strong><em>introduction to our project</em></strong></p>
-<p>For our DSFB2 project, we are going to build a shiny app that enables researchers from the Princess Maxima Center to organize the layout files.</p>
-<p>The prinses maxima center tests the effects that different drugs have on tumor cells by using high throughput screening. Files that contain the data per well from theses screenings are generated in an automated process. Also created are layout files that describe the different conditions used in every well. This is, however, not an automated processs and is still done by hand. The aim of our project is to create a user-friendly shiny app that lets a person create these layout files smoother and quicker.</p>
+<p>High throughput drug screening princes maxima centrum:</p>
+<p>High throughput drug <a href="mailto:screening@entzerothOverviewHighthroughputScreening2009" class="email">screening@entzerothOverviewHighthroughputScreening2009</a> (HTS) is a method for scientific experimentation especially used in drug <a href="mailto:discovery@hughesPrinciplesEarlyDrug2011" class="email">discovery@hughesPrinciplesEarlyDrug2011</a>. Using robotics high throughput drug screening allows researchers to quickly conduct millions of chemical, genetic or pharmacological tests. Through this process, genes, compounds or antibodys that modulate a particular pathway can easily be recognized.</p>
+<p><strong>How does it work:</strong></p>
+<p>Usually 384 well microplates are used for drug screening. This allows the researchers to, if they wish to, screen 384 different drugs in one plate. Firstly the researcher fiills the plate with some biological entity that they wish to experiment on. Examples are protein, cells, or an animal <a href="mailto:embryo@yangHighThroughputMethodsDiscovery2021" class="email">embryo@yangHighThroughputMethodsDiscovery2021</a>. After some time has passed to allow the biological matter to absorb, bind or otherwise react with the compound in the wells, measurements are taken across all the plates. A few examples of measurements that happen are: MTT assay, which measures the mitochondrial activity to measure cell metabolic activity, which can be translated to cell viability. ATP cell viability, which uses ATP to produce light which can be measured which translates to cell viability or shining polarized light on the biological matter measuring reflectivity, which indicates protein binding.</p>
+<p><strong>Princes maxima center:</strong>
+Our project was in collaboration with the princes maxima center. Princes maxima center, opened on June 5th 2018, is located at the Utrecht Science Park. It is the national center for pediatric <a href="mailto:oncology@davidoffPediatricOncology2010" class="email">oncology@davidoffPediatricOncology2010</a> in which care, scientific research and education in the field of cancer in children are integrated. It is a unique center because it takes care of all the children with cancer in the Netherlands. There mission is to cure every type of cancer, with optimal quality of life.</p>
+<p>We are working with the group that is responsible for the high throughput drug screening facility. Where they try to identify connections between drugs and specific genomic <a href="mailto:markers@garnettSystematicIdentificationGenomic2012" class="email">markers@garnettSystematicIdentificationGenomic2012</a>. They try to understand why a patient responds to a certain drug, and why others don’t. A high throughput drug screening facility is perfect for this, because u can screen a lot of drugs, in a lot of different concentrations on the cells of patients, fully automated with a <a href="mailto:robot@lauVitroVivoDrug2021" class="email">robot@lauVitroVivoDrug2021</a>; <span class="citation">@wongDrugScreeningCancer2017</span>.</p>
+<p>For this robot to work, it needs a plate layout, this is a file that states per well: Drug, R2ID (drug identifier) Concentration, Cells, Type and Control. This file was made by hand and this was a very tedious and time consuming task. So the princes maxima center asked us to make a user friendly R <a href="mailto:shiny@wojciechowskiInteractivePharmacometricApplications2015" class="email">shiny@wojciechowskiInteractivePharmacometricApplications2015</a> web application which makes the creation of the layout files easy.</p>
 
 </div>
 <p style="text-align: center;">
