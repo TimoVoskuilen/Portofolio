@@ -1,8 +1,0 @@
-# Bibliography
-
-
-All the references used for this portfolio
-
-__Bibliography__
-
-<div id="refs"></div>

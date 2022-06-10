@@ -1,0 +1,8 @@
+Monkey_pox_cases_worldwide.csv:
+This is a dataset containing per country:
+Confirmed_Cases, Suspected_Cases, Hospitalized, and travel history from the monkeypox virus. 
+
+
+World_country_and_usa_states_latitude_and_longtitude.csv 
+is a dataset containing per country:
+the latitude and longtitude coördinates.
