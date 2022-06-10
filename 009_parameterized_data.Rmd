@@ -20,12 +20,15 @@ library(ggplot2)
 covid_19_data <- read_csv("data_Raw/009_parameterized_data/Covid_19.csv")
 ```
 
-```{r making an object of the country, message=FALSE, warning=FALSE, include=FALSE, eval=FALSE}
-country <- params$data
+```{r making an object of the country, message=FALSE, warning=FALSE}
+# Parameters have been manually set as bookdown does not support stating parameters in YAML
+parameter<-list()
+parameter$country<-"Spain"
+
 ```
 
-```{r visualising the covid-19 cases, message=FALSE, warning=FALSE, eval=FALSE}
-covid_19_data %>% group_by(day, month, year) %>% filter(countriesAndTerritories == params$data) %>%
+```{r visualising the covid-19 cases, message=FALSE, warning=FALSE}
+covid_19_data %>% group_by(day, month, year) %>% filter(countriesAndTerritories == parameter$country) %>%
   ggplot(aes(x = month, y = cases)) +
   geom_point() +
   scale_x_continuous(breaks = seq(1, 12, 1)) +
@@ -34,8 +37,8 @@ covid_19_data %>% group_by(day, month, year) %>% filter(countriesAndTerritories 
        y = "COVID-19 cases")
 ```
 
-```{r visualising the covid-19 related deaths, message=FALSE, warning=FALSE, eval=FALSE}
-covid_19_data %>% group_by(day, month, year) %>% filter(countriesAndTerritories == params$data) %>%
+```{r visualising the covid-19 related deaths, message=FALSE, warning=FALSE}
+covid_19_data %>% group_by(day, month, year) %>% filter(countriesAndTerritories == parameter$country) %>%
   ggplot(aes(x = month, y = deaths)) +
   geom_point() +
   scale_x_continuous(breaks = seq(1, 12, 1)) +

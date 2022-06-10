@@ -7,7 +7,7 @@ output:
   bookdown::html_book:
     theme: flatly
 link-citations: yes
-bibliography: bibliography.bib
+bibliography: bibliography.json
 ---
 
 # frontpage
