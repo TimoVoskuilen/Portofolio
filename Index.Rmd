@@ -1,13 +1,13 @@
 ---
 title: "Index"
 site: bookdown::bookdown_site
+output: 
+  bookdown::html_book:
+    toc: FALSE
+    number_sections: FALSE
 documentclass: book
 css: style.css
-output:
-  bookdown::html_book:
-    theme: flatly
-link-citations: yes
-bibliography: bibliography.json
+bibliography: references.bib
 ---
 
 # frontpage
