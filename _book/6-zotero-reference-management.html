@@ -109,6 +109,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 
@@ -154,7 +176,8 @@ details > summary {
 <li><a href="8-creating-r-package.html#creating-r-package"><span class="toc-section-number">8</span> Creating R package</a></li>
 <li><a href="9-making-a-parameterized-markdown.html#making-a-parameterized-markdown"><span class="toc-section-number">9</span> Making a parameterized markdown</a></li>
 <li><a href="10-free-space.html#free-space"><span class="toc-section-number">10</span> Free space</a></li>
-<li><a href="11-frontpage.html#frontpage"><span class="toc-section-number">11</span> frontpage</a></li>
+<li><a href="11-bibliography.html#bibliography"><span class="toc-section-number">11</span> Bibliography</a></li>
+<li><a href="12-frontpage.html#frontpage"><span class="toc-section-number">12</span> frontpage</a></li>
 </ul>
 </div>
 </div>
@@ -165,13 +188,13 @@ details > summary {
 <h1><span class="header-section-number">6</span> Zotero reference management</h1>
 <p><strong><em>introduction to our project</em></strong></p>
 <p>High throughput drug screening princes maxima centrum:</p>
-<p>High throughput drug <a href="mailto:screening@entzerothOverviewHighthroughputScreening2009" class="email">screening@entzerothOverviewHighthroughputScreening2009</a> (HTS) is a method for scientific experimentation especially used in drug <a href="mailto:discovery@hughesPrinciplesEarlyDrug2011" class="email">discovery@hughesPrinciplesEarlyDrug2011</a>. Using robotics high throughput drug screening allows researchers to quickly conduct millions of chemical, genetic or pharmacological tests. Through this process, genes, compounds or antibodys that modulate a particular pathway can easily be recognized.</p>
+<p>High throughput drug screening <span class="citation">@entzerothOverviewHighthroughputScreening2009</span>(HTS) is a method for scientific experimentation especially used in drug discovery <span class="citation">@hughesPrinciplesEarlyDrug2011</span>. Using robotics high throughput drug screening allows researchers to quickly conduct millions of chemical, genetic or pharmacological tests. Through this process, genes, compounds or antibodys that modulate a particular pathway can easily be recognized.</p>
 <p><strong>How does it work:</strong></p>
-<p>Usually 384 well microplates are used for drug screening. This allows the researchers to, if they wish to, screen 384 different drugs in one plate. Firstly the researcher fiills the plate with some biological entity that they wish to experiment on. Examples are protein, cells, or an animal <a href="mailto:embryo@yangHighThroughputMethodsDiscovery2021" class="email">embryo@yangHighThroughputMethodsDiscovery2021</a>. After some time has passed to allow the biological matter to absorb, bind or otherwise react with the compound in the wells, measurements are taken across all the plates. A few examples of measurements that happen are: MTT assay, which measures the mitochondrial activity to measure cell metabolic activity, which can be translated to cell viability. ATP cell viability, which uses ATP to produce light which can be measured which translates to cell viability or shining polarized light on the biological matter measuring reflectivity, which indicates protein binding.</p>
+<p>Usually 384 well microplates are used for drug screening. This allows the researchers to, if they wish to, screen 384 different drugs in one plate. Firstly the researcher fiills the plate with some biological entity that they wish to experiment on. Examples are protein, cells, or an animal embryo <span class="citation">@yangHighThroughputMethodsDiscovery2021</span>. After some time has passed to allow the biological matter to absorb, bind or otherwise react with the compound in the wells, measurements are taken across all the plates. A few examples of measurements that happen are: MTT assay, which measures the mitochondrial activity to measure cell metabolic activity, which can be translated to cell viability. ATP cell viability, which uses ATP to produce light which can be measured which translates to cell viability or shining polarized light on the biological matter measuring reflectivity, which indicates protein binding.</p>
 <p><strong>Princes maxima center:</strong>
-Our project was in collaboration with the princes maxima center. Princes maxima center, opened on June 5th 2018, is located at the Utrecht Science Park. It is the national center for pediatric <a href="mailto:oncology@davidoffPediatricOncology2010" class="email">oncology@davidoffPediatricOncology2010</a> in which care, scientific research and education in the field of cancer in children are integrated. It is a unique center because it takes care of all the children with cancer in the Netherlands. There mission is to cure every type of cancer, with optimal quality of life.</p>
-<p>We are working with the group that is responsible for the high throughput drug screening facility. Where they try to identify connections between drugs and specific genomic <a href="mailto:markers@garnettSystematicIdentificationGenomic2012" class="email">markers@garnettSystematicIdentificationGenomic2012</a>. They try to understand why a patient responds to a certain drug, and why others don’t. A high throughput drug screening facility is perfect for this, because u can screen a lot of drugs, in a lot of different concentrations on the cells of patients, fully automated with a <a href="mailto:robot@lauVitroVivoDrug2021" class="email">robot@lauVitroVivoDrug2021</a>; <span class="citation">@wongDrugScreeningCancer2017</span>.</p>
-<p>For this robot to work, it needs a plate layout, this is a file that states per well: Drug, R2ID (drug identifier) Concentration, Cells, Type and Control. This file was made by hand and this was a very tedious and time consuming task. So the princes maxima center asked us to make a user friendly R <a href="mailto:shiny@wojciechowskiInteractivePharmacometricApplications2015" class="email">shiny@wojciechowskiInteractivePharmacometricApplications2015</a> web application which makes the creation of the layout files easy.</p>
+Our project was in collaboration with the princes maxima center. Princes maxima center, opened on June 5th 2018, is located at the Utrecht Science Park. It is the national center for pediatric oncology <span class="citation">@davidoffPediatricOncology2010</span> in which care, scientific research and education in the field of cancer in children are integrated. It is a unique center because it takes care of all the children with cancer in the Netherlands. There mission is to cure every type of cancer, with optimal quality of life.</p>
+<p>We are working with the group that is responsible for the high throughput drug screening facility. Where they try to identify connections between drugs and specific genomic markers <span class="citation">@garnettSystematicIdentificationGenomic2012</span>. They try to understand why a patient responds to a certain drug, and why others don’t. A high throughput drug screening facility is perfect for this, because u can screen a lot of drugs, in a lot of different concentrations on the cells of patients, fully automated with a robot <span class="citation">@lauVitroVivoDrug2021</span>; <span class="citation">@wongDrugScreeningCancer2017</span>.</p>
+<p>For this robot to work, it needs a plate layout, this is a file that states per well: Drug, R2ID (drug identifier) Concentration, Cells, Type and Control. This file was made by hand and this was a very tedious and time consuming task. So the princes maxima center asked us to make a user friendly R shiny <span class="citation">@wojciechowskiInteractivePharmacometricApplications2015</span> web application which makes the creation of the layout files easy.</p>
 
 </div>
 <p style="text-align: center;">

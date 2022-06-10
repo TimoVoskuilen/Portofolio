@@ -6,7 +6,8 @@ css: style.css
 output:
   bookdown::html_book:
     theme: flatly
-bibliography: references.bib
+link-citations: yes
+bibliography: bibliography.bib
 ---
 
 # frontpage

@@ -8,4 +8,5 @@ relational-databases
 creating-r-package
 making-a-parameterized-markdown
 free-space
+bibliography
 frontpage
