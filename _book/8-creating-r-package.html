@@ -186,16 +186,16 @@ details > summary {
 <div id="creating-r-package" class="section level1" number="8">
 <h1><span class="header-section-number">8</span> Creating R package</h1>
 <p>To prove my abilitiy to create an R package, I have created a package called “neattools”, neattools is a package that helps you manipulate data in a dataframe.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="8-creating-r-package.html#cb27-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;timovoskuilen/neattools&quot;</span>, <span class="at">build_vignettes =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="8-creating-r-package.html#cb25-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;timovoskuilen/neattools&quot;</span>, <span class="at">build_vignettes =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>for the creation of this package, the mtcars dataset, which is a build in R dataset, is used. Also, attached to the package is a dataset called layout, which is a dataset containing a made up 384 wells plate layout for drug screening.</p>
 <p><strong>Functions</strong></p>
 <p>This package includes 4 functions, which will all be shown including examples below.</p>
 <p>The function <strong>flip</strong> flips the columns and rows from a dataframe:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="8-creating-r-package.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars, <span class="at">n =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="8-creating-r-package.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars, <span class="at">n =</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##               mpg cyl disp  hp drat    wt  qsec vs am gear carb
 ## Mazda RX4      21   6  160 110  3.9 2.620 16.46  0  1    4    4
 ## Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="8-creating-r-package.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">flip</span>(<span class="fu">head</span>(mtcars, <span class="at">n =</span> <span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="8-creating-r-package.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">flip</span>(<span class="fu">head</span>(mtcars, <span class="at">n =</span> <span class="dv">2</span>))</span></code></pre></div>
 <pre><code>##      Mazda RX4 Mazda RX4 Wag
 ## mpg      21.00        21.000
 ## cyl       6.00         6.000
@@ -209,32 +209,32 @@ details > summary {
 ## gear      4.00         4.000
 ## carb      4.00         4.000</code></pre>
 <p>the function __ removecolumn__ lets you remove a specific column from a dataframe</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="8-creating-r-package.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(layout, <span class="at">n =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="8-creating-r-package.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(layout, <span class="at">n =</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 10
 ##   WellId WellAddress Column   Row Drug     R2ID  Concentration Cells Type  Control
 ##    &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;lgl&gt; &lt;lgl&gt;         &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt;  
 ## 1      1 A1               1     1 Analyfyn NA    NA            NA    NA    NA     
 ## 2     25 B1               1     2 Analyfyn NA    NA            NA    NA    NA</code></pre>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="8-creating-r-package.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">removecolumn</span>(<span class="fu">head</span>(layout, <span class="at">n =</span><span class="dv">2</span>), <span class="st">&quot;Drug&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="8-creating-r-package.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">removecolumn</span>(<span class="fu">head</span>(layout, <span class="at">n =</span><span class="dv">2</span>), <span class="st">&quot;Drug&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 9
 ##   WellId WellAddress Column   Row R2ID  Concentration Cells Type  Control
 ##    &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt; &lt;lgl&gt;         &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt;  
 ## 1      1 A1               1     1 NA    NA            NA    NA    NA     
 ## 2     25 B1               1     2 NA    NA            NA    NA    NA</code></pre>
 <p>the function <strong>subset</strong> lets you subset specific rows from a dataframe</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="8-creating-r-package.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(layout, <span class="at">n =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="8-creating-r-package.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(layout, <span class="at">n =</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 10
 ##   WellId WellAddress Column   Row Drug     R2ID  Concentration Cells Type  Control
 ##    &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;lgl&gt; &lt;lgl&gt;         &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt;  
 ## 1      1 A1               1     1 Analyfyn NA    NA            NA    NA    NA     
 ## 2     25 B1               1     2 Analyfyn NA    NA            NA    NA    NA</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="8-creating-r-package.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(<span class="fu">head</span>(layout, <span class="at">n =</span> <span class="dv">2</span>), <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="8-creating-r-package.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(<span class="fu">head</span>(layout, <span class="at">n =</span> <span class="dv">2</span>), <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 10
 ##   WellId WellAddress Column   Row Drug     R2ID  Concentration Cells Type  Control
 ##    &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;lgl&gt; &lt;lgl&gt;         &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt;  
 ## 1      1 A1               1     1 Analyfyn NA    NA            NA    NA    NA</code></pre>
 <p>the function <strong>replacevalue</strong> lets you replace a specific value in a dataframe</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="8-creating-r-package.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(layout, <span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="8-creating-r-package.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(layout, <span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 10
 ##   WellId WellAddress Column   Row Drug     R2ID  Concentration Cells Type  Control
 ##    &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;lgl&gt; &lt;lgl&gt;         &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt;  
@@ -243,7 +243,7 @@ details > summary {
 ## 3     49 C1               1     3 Analyfyn NA    NA            NA    NA    NA     
 ## 4     73 D1               1     4 Analyfyn NA    NA            NA    NA    NA     
 ## 5     97 E1               1     5 Analyfyn NA    NA            NA    NA    NA</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="8-creating-r-package.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replacevalue</span>(<span class="fu">head</span>(layout, <span class="at">n =</span> <span class="dv">5</span>), <span class="st">&quot;Drug&quot;</span>, <span class="st">&quot;Analyfyn&quot;</span>, <span class="st">&quot;Test&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="8-creating-r-package.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replacevalue</span>(<span class="fu">head</span>(layout, <span class="at">n =</span> <span class="dv">5</span>), <span class="st">&quot;Drug&quot;</span>, <span class="st">&quot;Analyfyn&quot;</span>, <span class="st">&quot;Test&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 10
 ##   WellId WellAddress Column   Row Drug  R2ID  Concentration Cells Type  Control
 ##    &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;lgl&gt; &lt;lgl&gt;         &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt;  

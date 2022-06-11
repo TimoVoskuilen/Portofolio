@@ -199,139 +199,139 @@ A world map with data plotted on it.</p>
 <a href="https://www.kaggle.com/datasets/deepcontractor/monkeypox-dataset-daily-updated?select=Monkey_Pox_Cases_Worldwide.csv" class="uri">https://www.kaggle.com/datasets/deepcontractor/monkeypox-dataset-daily-updated?select=Monkey_Pox_Cases_Worldwide.csv</a></p>
 <p><strong>CODE</strong></p>
 <p>First I needed to prepare the data:</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="10-free-space.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb49-2"><a href="10-free-space.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maps)</span>
-<span id="cb49-3"><a href="10-free-space.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb49-4"><a href="10-free-space.html#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(neattools)</span></code></pre></div>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="10-free-space.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Source my monkeypox file with data</span></span>
-<span id="cb50-2"><a href="10-free-space.html#cb50-2" aria-hidden="true" tabindex="-1"></a>monkeypox_data<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data_raw/010_free_space/Monkey_Pox_Cases_Worldwide.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="10-free-space.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb47-2"><a href="10-free-space.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maps)</span>
+<span id="cb47-3"><a href="10-free-space.html#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb47-4"><a href="10-free-space.html#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(neattools)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="10-free-space.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Source my monkeypox file with data</span></span>
+<span id="cb48-2"><a href="10-free-space.html#cb48-2" aria-hidden="true" tabindex="-1"></a>monkeypox_data<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data_raw/010_free_space/Monkey_Pox_Cases_Worldwide.csv&quot;</span>)</span></code></pre></div>
 <p>To plot a map with on it an indication on how bad the infections were per country, I would need a package that allows you to print a world map. the package <strong>maps</strong> would do that for me. To plot the indication per country, I would need a data frame with the longtitudes and latitudes from all countrys in the world, I found the following dataset online: <a href="https://www.kaggle.com/datasets/paultimothymooney/latitude-and-longitude-for-every-country-and-state" class="uri">https://www.kaggle.com/datasets/paultimothymooney/latitude-and-longitude-for-every-country-and-state</a></p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="10-free-space.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># source of country latitude and longtitude </span></span>
-<span id="cb51-2"><a href="10-free-space.html#cb51-2" aria-hidden="true" tabindex="-1"></a>countryCoordinates <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data_raw/010_free_space/world_country_and_usa_states_latitude_and_longitude_values.csv&quot;</span>)</span>
-<span id="cb51-3"><a href="10-free-space.html#cb51-3" aria-hidden="true" tabindex="-1"></a>countryCoordinates2 <span class="ot">&lt;-</span> countryCoordinates[,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="10-free-space.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># source of country latitude and longtitude </span></span>
+<span id="cb49-2"><a href="10-free-space.html#cb49-2" aria-hidden="true" tabindex="-1"></a>countryCoordinates <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data_raw/010_free_space/world_country_and_usa_states_latitude_and_longitude_values.csv&quot;</span>)</span>
+<span id="cb49-3"><a href="10-free-space.html#cb49-3" aria-hidden="true" tabindex="-1"></a>countryCoordinates2 <span class="ot">&lt;-</span> countryCoordinates[,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)]</span></code></pre></div>
 <p>Next I would want to merge these datasets so the latitude and longtitude, and rate of infections were in the same graph, I did the following:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="10-free-space.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Rename column to make it merge with dataset</span></span>
-<span id="cb52-2"><a href="10-free-space.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(monkeypox_data)[<span class="fu">names</span>(monkeypox_data)<span class="sc">==</span><span class="st">&quot;Country&quot;</span>]<span class="ot">&lt;-</span><span class="st">&quot;country&quot;</span></span>
-<span id="cb52-3"><a href="10-free-space.html#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="co">#rename england to united kingdom</span></span>
-<span id="cb52-4"><a href="10-free-space.html#cb52-4" aria-hidden="true" tabindex="-1"></a>monkeypox_data<span class="ot">&lt;-</span><span class="fu">replacevalue</span>(monkeypox_data, <span class="st">&quot;country&quot;</span>, <span class="st">&quot;England&quot;</span>, <span class="st">&quot;United Kingdom&quot;</span>)</span>
-<span id="cb52-5"><a href="10-free-space.html#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a smaller data frame including only my variables of #interest:country, monkeypox rate, continent</span></span>
-<span id="cb52-6"><a href="10-free-space.html#cb52-6" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span> monkeypox_data[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)]</span>
-<span id="cb52-7"><a href="10-free-space.html#cb52-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-8"><a href="10-free-space.html#cb52-8" aria-hidden="true" tabindex="-1"></a>mergedCleaned <span class="ot">&lt;-</span> <span class="fu">merge</span>(monkeypox_data, countryCoordinates2, <span class="at">by=</span><span class="st">&quot;country&quot;</span>, <span class="at">all.x=</span><span class="cn">FALSE</span>)</span>
-<span id="cb52-9"><a href="10-free-space.html#cb52-9" aria-hidden="true" tabindex="-1"></a>mergedCleaned</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="10-free-space.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Rename column to make it merge with dataset</span></span>
+<span id="cb50-2"><a href="10-free-space.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(monkeypox_data)[<span class="fu">names</span>(monkeypox_data)<span class="sc">==</span><span class="st">&quot;Country&quot;</span>]<span class="ot">&lt;-</span><span class="st">&quot;country&quot;</span></span>
+<span id="cb50-3"><a href="10-free-space.html#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co">#rename england to united kingdom</span></span>
+<span id="cb50-4"><a href="10-free-space.html#cb50-4" aria-hidden="true" tabindex="-1"></a>monkeypox_data<span class="ot">&lt;-</span><span class="fu">replacevalue</span>(monkeypox_data, <span class="st">&quot;country&quot;</span>, <span class="st">&quot;England&quot;</span>, <span class="st">&quot;United Kingdom&quot;</span>)</span>
+<span id="cb50-5"><a href="10-free-space.html#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a smaller data frame including only my variables of #interest:country, monkeypox rate, continent</span></span>
+<span id="cb50-6"><a href="10-free-space.html#cb50-6" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span> monkeypox_data[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)]</span>
+<span id="cb50-7"><a href="10-free-space.html#cb50-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-8"><a href="10-free-space.html#cb50-8" aria-hidden="true" tabindex="-1"></a>mergedCleaned <span class="ot">&lt;-</span> <span class="fu">merge</span>(monkeypox_data, countryCoordinates2, <span class="at">by=</span><span class="st">&quot;country&quot;</span>, <span class="at">all.x=</span><span class="cn">FALSE</span>)</span>
+<span id="cb50-9"><a href="10-free-space.html#cb50-9" aria-hidden="true" tabindex="-1"></a>mergedCleaned</span></code></pre></div>
 <p>Now that I have my dataset ready, I want to start by making the shiny web application. To do this I need to create two different components: A user interface definition and a server script. the user interface definition is called ui.R and the server script server.R. they both need to be in the same folder.</p>
 <p>Below are the scripts for the user interface and the server components:</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="10-free-space.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="do">## server.R</span></span>
-<span id="cb53-2"><a href="10-free-space.html#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-3"><a href="10-free-space.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb53-4"><a href="10-free-space.html#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maps)</span>
-<span id="cb53-5"><a href="10-free-space.html#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb53-6"><a href="10-free-space.html#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(neattools)</span>
-<span id="cb53-7"><a href="10-free-space.html#cb53-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-8"><a href="10-free-space.html#cb53-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Source my monkeypox file with data</span></span>
-<span id="cb53-9"><a href="10-free-space.html#cb53-9" aria-hidden="true" tabindex="-1"></a>monkeypox_data<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data_raw/Monkey_Pox_Cases_Worldwide.csv&quot;</span>)</span>
-<span id="cb53-10"><a href="10-free-space.html#cb53-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(monkeypox_data)[<span class="fu">names</span>(monkeypox_data)<span class="sc">==</span><span class="st">&quot;Country&quot;</span>]<span class="ot">&lt;-</span><span class="st">&quot;country&quot;</span></span>
-<span id="cb53-11"><a href="10-free-space.html#cb53-11" aria-hidden="true" tabindex="-1"></a>monkeypox_data<span class="ot">&lt;-</span><span class="fu">replacevalue</span>(monkeypox_data, <span class="st">&quot;country&quot;</span>, <span class="st">&quot;England&quot;</span>, <span class="st">&quot;United Kingdom&quot;</span>)</span>
-<span id="cb53-12"><a href="10-free-space.html#cb53-12" aria-hidden="true" tabindex="-1"></a>monkeypox_data</span>
-<span id="cb53-13"><a href="10-free-space.html#cb53-13" aria-hidden="true" tabindex="-1"></a><span class="co"># source of country latitude and longtitude </span></span>
-<span id="cb53-14"><a href="10-free-space.html#cb53-14" aria-hidden="true" tabindex="-1"></a>countryCoordinates <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data_raw/world_country_and_usa_states_latitude_and_longitude_values.csv&quot;</span>)</span>
-<span id="cb53-15"><a href="10-free-space.html#cb53-15" aria-hidden="true" tabindex="-1"></a>countryCoordinates2 <span class="ot">&lt;-</span> countryCoordinates[,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)]</span>
-<span id="cb53-16"><a href="10-free-space.html#cb53-16" aria-hidden="true" tabindex="-1"></a>countryCoordinates2</span>
-<span id="cb53-17"><a href="10-free-space.html#cb53-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a smaller data frame including only my variables of #interest:country, monkeypox rate, continent</span></span>
-<span id="cb53-18"><a href="10-free-space.html#cb53-18" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span> monkeypox_data[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)]</span>
-<span id="cb53-19"><a href="10-free-space.html#cb53-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-20"><a href="10-free-space.html#cb53-20" aria-hidden="true" tabindex="-1"></a>mergedCleaned <span class="ot">&lt;-</span> <span class="fu">merge</span>(monkeypox_data, countryCoordinates2, <span class="at">by=</span><span class="st">&quot;country&quot;</span>, <span class="at">all.x=</span><span class="cn">FALSE</span>)</span>
-<span id="cb53-21"><a href="10-free-space.html#cb53-21" aria-hidden="true" tabindex="-1"></a>mergedCleaned</span>
-<span id="cb53-22"><a href="10-free-space.html#cb53-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-23"><a href="10-free-space.html#cb53-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-24"><a href="10-free-space.html#cb53-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Define server logic to plot monkeypox data for various #continents/countries</span></span>
-<span id="cb53-25"><a href="10-free-space.html#cb53-25" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyServer</span>(<span class="cf">function</span>(input,output){</span>
-<span id="cb53-26"><a href="10-free-space.html#cb53-26" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb53-27"><a href="10-free-space.html#cb53-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Sentence presenting the table in a reactive expression</span></span>
-<span id="cb53-28"><a href="10-free-space.html#cb53-28" aria-hidden="true" tabindex="-1"></a>  tableText<span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb53-29"><a href="10-free-space.html#cb53-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(<span class="st">&quot;This table ranks countries by number of monkeypox cases. You have selected all countries in&quot;</span>)</span>
-<span id="cb53-30"><a href="10-free-space.html#cb53-30" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb53-31"><a href="10-free-space.html#cb53-31" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb53-32"><a href="10-free-space.html#cb53-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># now I return the tabletText for printing as a caption</span></span>
-<span id="cb53-33"><a href="10-free-space.html#cb53-33" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>caption<span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
-<span id="cb53-34"><a href="10-free-space.html#cb53-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tableText</span>()</span>
-<span id="cb53-35"><a href="10-free-space.html#cb53-35" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb53-36"><a href="10-free-space.html#cb53-36" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb53-37"><a href="10-free-space.html#cb53-37" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb53-38"><a href="10-free-space.html#cb53-38" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plot a table that ranks countries (from most affected to the least) by monkeypox rate</span></span>
-<span id="cb53-39"><a href="10-free-space.html#cb53-39" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>rank<span class="ot">&lt;-</span> <span class="fu">renderTable</span>({</span>
-<span id="cb53-40"><a href="10-free-space.html#cb53-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(x[<span class="fu">order</span>(x<span class="sc">$</span>Confirmed_Cases, <span class="at">decreasing=</span>T),], <span class="at">n =</span> input<span class="sc">$</span>obs)  </span>
-<span id="cb53-41"><a href="10-free-space.html#cb53-41" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb53-42"><a href="10-free-space.html#cb53-42" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb53-43"><a href="10-free-space.html#cb53-43" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb53-44"><a href="10-free-space.html#cb53-44" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plot a world map visualizing monkeypox incidence. The radius of the circle correspond</span></span>
-<span id="cb53-45"><a href="10-free-space.html#cb53-45" aria-hidden="true" tabindex="-1"></a>  <span class="co"># to the number of monkeypox new cases (larger radius = more monkeypox new cases)</span></span>
-<span id="cb53-46"><a href="10-free-space.html#cb53-46" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb53-47"><a href="10-free-space.html#cb53-47" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb53-48"><a href="10-free-space.html#cb53-48" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>map<span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb53-49"><a href="10-free-space.html#cb53-49" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb53-50"><a href="10-free-space.html#cb53-50" aria-hidden="true" tabindex="-1"></a>    <span class="fu">map</span>(<span class="st">&quot;world&quot;</span>,<span class="at">col=</span><span class="st">&quot;gray90&quot;</span>, <span class="at">fill=</span><span class="cn">TRUE</span>)</span>
-<span id="cb53-51"><a href="10-free-space.html#cb53-51" aria-hidden="true" tabindex="-1"></a>    radius <span class="ot">&lt;-</span> (mergedCleaned[,input<span class="sc">$</span>plottie])</span>
-<span id="cb53-52"><a href="10-free-space.html#cb53-52" aria-hidden="true" tabindex="-1"></a>    <span class="fu">symbols</span>(mergedCleaned<span class="sc">$</span>longitude, mergedCleaned<span class="sc">$</span>latitude, <span class="at">bg =</span> <span class="st">&quot;red&quot;</span>, <span class="at">fg =</span> <span class="st">&quot;green&quot;</span>, <span class="at">lwd =</span> <span class="fl">0.1</span>, <span class="at">circles =</span> radius, <span class="at">inches =</span> <span class="fl">0.12</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb53-53"><a href="10-free-space.html#cb53-53" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb53-54"><a href="10-free-space.html#cb53-54" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb53-55"><a href="10-free-space.html#cb53-55" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb53-56"><a href="10-free-space.html#cb53-56" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb53-57"><a href="10-free-space.html#cb53-57" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb53-58"><a href="10-free-space.html#cb53-58" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="10-free-space.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="do">## server.R</span></span>
+<span id="cb51-2"><a href="10-free-space.html#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="10-free-space.html#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb51-4"><a href="10-free-space.html#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maps)</span>
+<span id="cb51-5"><a href="10-free-space.html#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb51-6"><a href="10-free-space.html#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(neattools)</span>
+<span id="cb51-7"><a href="10-free-space.html#cb51-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-8"><a href="10-free-space.html#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Source my monkeypox file with data</span></span>
+<span id="cb51-9"><a href="10-free-space.html#cb51-9" aria-hidden="true" tabindex="-1"></a>monkeypox_data<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data_raw/Monkey_Pox_Cases_Worldwide.csv&quot;</span>)</span>
+<span id="cb51-10"><a href="10-free-space.html#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(monkeypox_data)[<span class="fu">names</span>(monkeypox_data)<span class="sc">==</span><span class="st">&quot;Country&quot;</span>]<span class="ot">&lt;-</span><span class="st">&quot;country&quot;</span></span>
+<span id="cb51-11"><a href="10-free-space.html#cb51-11" aria-hidden="true" tabindex="-1"></a>monkeypox_data<span class="ot">&lt;-</span><span class="fu">replacevalue</span>(monkeypox_data, <span class="st">&quot;country&quot;</span>, <span class="st">&quot;England&quot;</span>, <span class="st">&quot;United Kingdom&quot;</span>)</span>
+<span id="cb51-12"><a href="10-free-space.html#cb51-12" aria-hidden="true" tabindex="-1"></a>monkeypox_data</span>
+<span id="cb51-13"><a href="10-free-space.html#cb51-13" aria-hidden="true" tabindex="-1"></a><span class="co"># source of country latitude and longtitude </span></span>
+<span id="cb51-14"><a href="10-free-space.html#cb51-14" aria-hidden="true" tabindex="-1"></a>countryCoordinates <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data_raw/world_country_and_usa_states_latitude_and_longitude_values.csv&quot;</span>)</span>
+<span id="cb51-15"><a href="10-free-space.html#cb51-15" aria-hidden="true" tabindex="-1"></a>countryCoordinates2 <span class="ot">&lt;-</span> countryCoordinates[,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)]</span>
+<span id="cb51-16"><a href="10-free-space.html#cb51-16" aria-hidden="true" tabindex="-1"></a>countryCoordinates2</span>
+<span id="cb51-17"><a href="10-free-space.html#cb51-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a smaller data frame including only my variables of #interest:country, monkeypox rate, continent</span></span>
+<span id="cb51-18"><a href="10-free-space.html#cb51-18" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span> monkeypox_data[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)]</span>
+<span id="cb51-19"><a href="10-free-space.html#cb51-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-20"><a href="10-free-space.html#cb51-20" aria-hidden="true" tabindex="-1"></a>mergedCleaned <span class="ot">&lt;-</span> <span class="fu">merge</span>(monkeypox_data, countryCoordinates2, <span class="at">by=</span><span class="st">&quot;country&quot;</span>, <span class="at">all.x=</span><span class="cn">FALSE</span>)</span>
+<span id="cb51-21"><a href="10-free-space.html#cb51-21" aria-hidden="true" tabindex="-1"></a>mergedCleaned</span>
+<span id="cb51-22"><a href="10-free-space.html#cb51-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-23"><a href="10-free-space.html#cb51-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-24"><a href="10-free-space.html#cb51-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Define server logic to plot monkeypox data for various #continents/countries</span></span>
+<span id="cb51-25"><a href="10-free-space.html#cb51-25" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyServer</span>(<span class="cf">function</span>(input,output){</span>
+<span id="cb51-26"><a href="10-free-space.html#cb51-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb51-27"><a href="10-free-space.html#cb51-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Sentence presenting the table in a reactive expression</span></span>
+<span id="cb51-28"><a href="10-free-space.html#cb51-28" aria-hidden="true" tabindex="-1"></a>  tableText<span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb51-29"><a href="10-free-space.html#cb51-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(<span class="st">&quot;This table ranks countries by number of monkeypox cases. You have selected all countries in&quot;</span>)</span>
+<span id="cb51-30"><a href="10-free-space.html#cb51-30" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb51-31"><a href="10-free-space.html#cb51-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb51-32"><a href="10-free-space.html#cb51-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># now I return the tabletText for printing as a caption</span></span>
+<span id="cb51-33"><a href="10-free-space.html#cb51-33" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>caption<span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb51-34"><a href="10-free-space.html#cb51-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tableText</span>()</span>
+<span id="cb51-35"><a href="10-free-space.html#cb51-35" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb51-36"><a href="10-free-space.html#cb51-36" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb51-37"><a href="10-free-space.html#cb51-37" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb51-38"><a href="10-free-space.html#cb51-38" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plot a table that ranks countries (from most affected to the least) by monkeypox rate</span></span>
+<span id="cb51-39"><a href="10-free-space.html#cb51-39" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>rank<span class="ot">&lt;-</span> <span class="fu">renderTable</span>({</span>
+<span id="cb51-40"><a href="10-free-space.html#cb51-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(x[<span class="fu">order</span>(x<span class="sc">$</span>Confirmed_Cases, <span class="at">decreasing=</span>T),], <span class="at">n =</span> input<span class="sc">$</span>obs)  </span>
+<span id="cb51-41"><a href="10-free-space.html#cb51-41" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb51-42"><a href="10-free-space.html#cb51-42" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb51-43"><a href="10-free-space.html#cb51-43" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb51-44"><a href="10-free-space.html#cb51-44" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plot a world map visualizing monkeypox incidence. The radius of the circle correspond</span></span>
+<span id="cb51-45"><a href="10-free-space.html#cb51-45" aria-hidden="true" tabindex="-1"></a>  <span class="co"># to the number of monkeypox new cases (larger radius = more monkeypox new cases)</span></span>
+<span id="cb51-46"><a href="10-free-space.html#cb51-46" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb51-47"><a href="10-free-space.html#cb51-47" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb51-48"><a href="10-free-space.html#cb51-48" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>map<span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb51-49"><a href="10-free-space.html#cb51-49" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb51-50"><a href="10-free-space.html#cb51-50" aria-hidden="true" tabindex="-1"></a>    <span class="fu">map</span>(<span class="st">&quot;world&quot;</span>,<span class="at">col=</span><span class="st">&quot;gray90&quot;</span>, <span class="at">fill=</span><span class="cn">TRUE</span>)</span>
+<span id="cb51-51"><a href="10-free-space.html#cb51-51" aria-hidden="true" tabindex="-1"></a>    radius <span class="ot">&lt;-</span> (mergedCleaned[,input<span class="sc">$</span>plottie])</span>
+<span id="cb51-52"><a href="10-free-space.html#cb51-52" aria-hidden="true" tabindex="-1"></a>    <span class="fu">symbols</span>(mergedCleaned<span class="sc">$</span>longitude, mergedCleaned<span class="sc">$</span>latitude, <span class="at">bg =</span> <span class="st">&quot;red&quot;</span>, <span class="at">fg =</span> <span class="st">&quot;green&quot;</span>, <span class="at">lwd =</span> <span class="fl">0.1</span>, <span class="at">circles =</span> radius, <span class="at">inches =</span> <span class="fl">0.12</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb51-53"><a href="10-free-space.html#cb51-53" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb51-54"><a href="10-free-space.html#cb51-54" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb51-55"><a href="10-free-space.html#cb51-55" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb51-56"><a href="10-free-space.html#cb51-56" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb51-57"><a href="10-free-space.html#cb51-57" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb51-58"><a href="10-free-space.html#cb51-58" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 <p>and the code for the UI component of the shiny app:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="10-free-space.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="do">##ui.R</span></span>
-<span id="cb54-2"><a href="10-free-space.html#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-3"><a href="10-free-space.html#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb54-4"><a href="10-free-space.html#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maps)</span>
-<span id="cb54-5"><a href="10-free-space.html#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb54-6"><a href="10-free-space.html#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(neattools)</span>
-<span id="cb54-7"><a href="10-free-space.html#cb54-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-8"><a href="10-free-space.html#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Source my monkeypox file with data</span></span>
-<span id="cb54-9"><a href="10-free-space.html#cb54-9" aria-hidden="true" tabindex="-1"></a>monkeypox_data<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data_raw/Monkey_Pox_Cases_Worldwide.csv&quot;</span>)</span>
-<span id="cb54-10"><a href="10-free-space.html#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(monkeypox_data)[<span class="fu">names</span>(monkeypox_data)<span class="sc">==</span><span class="st">&quot;Country&quot;</span>]<span class="ot">&lt;-</span><span class="st">&quot;country&quot;</span></span>
-<span id="cb54-11"><a href="10-free-space.html#cb54-11" aria-hidden="true" tabindex="-1"></a>monkeypox_data<span class="ot">&lt;-</span><span class="fu">replacevalue</span>(monkeypox_data, <span class="st">&quot;country&quot;</span>, <span class="st">&quot;England&quot;</span>, <span class="st">&quot;United Kingdom&quot;</span>)</span>
-<span id="cb54-12"><a href="10-free-space.html#cb54-12" aria-hidden="true" tabindex="-1"></a>monkeypox_data</span>
-<span id="cb54-13"><a href="10-free-space.html#cb54-13" aria-hidden="true" tabindex="-1"></a><span class="co"># source of country latitude and longtitude </span></span>
-<span id="cb54-14"><a href="10-free-space.html#cb54-14" aria-hidden="true" tabindex="-1"></a>countryCoordinates <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data_raw/world_country_and_usa_states_latitude_and_longitude_values.csv&quot;</span>)</span>
-<span id="cb54-15"><a href="10-free-space.html#cb54-15" aria-hidden="true" tabindex="-1"></a>countryCoordinates2 <span class="ot">&lt;-</span> countryCoordinates[,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)]</span>
-<span id="cb54-16"><a href="10-free-space.html#cb54-16" aria-hidden="true" tabindex="-1"></a>countryCoordinates2</span>
-<span id="cb54-17"><a href="10-free-space.html#cb54-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a smaller data frame including only my variables of #interest:country, monkeypox rate, continent</span></span>
-<span id="cb54-18"><a href="10-free-space.html#cb54-18" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span> monkeypox_data[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)]</span>
-<span id="cb54-19"><a href="10-free-space.html#cb54-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-20"><a href="10-free-space.html#cb54-20" aria-hidden="true" tabindex="-1"></a>mergedCleaned <span class="ot">&lt;-</span> <span class="fu">merge</span>(monkeypox_data, countryCoordinates2, <span class="at">by=</span><span class="st">&quot;country&quot;</span>, <span class="at">all.x=</span><span class="cn">FALSE</span>)</span>
-<span id="cb54-21"><a href="10-free-space.html#cb54-21" aria-hidden="true" tabindex="-1"></a>mergedCleaned</span>
-<span id="cb54-22"><a href="10-free-space.html#cb54-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-23"><a href="10-free-space.html#cb54-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Define UI for my first breast cancer application</span></span>
-<span id="cb54-24"><a href="10-free-space.html#cb54-24" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyUI</span>(<span class="fu">pageWithSidebar</span>(</span>
-<span id="cb54-25"><a href="10-free-space.html#cb54-25" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb54-26"><a href="10-free-space.html#cb54-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># my Application title</span></span>
-<span id="cb54-27"><a href="10-free-space.html#cb54-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">headerPanel</span>(<span class="st">&quot;Monkeypox Rate across Countrys&quot;</span>),</span>
-<span id="cb54-28"><a href="10-free-space.html#cb54-28" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb54-29"><a href="10-free-space.html#cb54-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># a sidebar with controls to select the continent for wich I want to see the distribution</span></span>
-<span id="cb54-30"><a href="10-free-space.html#cb54-30" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb54-31"><a href="10-free-space.html#cb54-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sidebarPanel</span>(</span>
-<span id="cb54-32"><a href="10-free-space.html#cb54-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">numericInput</span>(<span class="st">&quot;obs&quot;</span>, <span class="st">&quot;Choose how many countries to view in the table&quot;</span>, <span class="dv">3</span>),</span>
-<span id="cb54-33"><a href="10-free-space.html#cb54-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">&quot;plottie&quot;</span>, <span class="st">&quot;Choose what you want to plot&quot;</span>, <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">&quot;Confirmed_Cases&quot;</span>, <span class="st">&quot;Suspected_Cases&quot;</span>, <span class="st">&quot;Hospitalized&quot;</span>))</span>
-<span id="cb54-34"><a href="10-free-space.html#cb54-34" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb54-35"><a href="10-free-space.html#cb54-35" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb54-36"><a href="10-free-space.html#cb54-36" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb54-37"><a href="10-free-space.html#cb54-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mainPanel</span>(</span>
-<span id="cb54-38"><a href="10-free-space.html#cb54-38" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb54-39"><a href="10-free-space.html#cb54-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">h4</span>(<span class="fu">textOutput</span>(<span class="st">&quot;caption&quot;</span>)),</span>
-<span id="cb54-40"><a href="10-free-space.html#cb54-40" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb54-41"><a href="10-free-space.html#cb54-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tableOutput</span>(<span class="st">&quot;rank&quot;</span>),</span>
-<span id="cb54-42"><a href="10-free-space.html#cb54-42" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb54-43"><a href="10-free-space.html#cb54-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">helpText</span>(<span class="st">&quot;Below we report the same data of the table, on a world map. The size of the circle corresponds to the number of monkeypox new cases on that country.&quot;</span>),</span>
-<span id="cb54-44"><a href="10-free-space.html#cb54-44" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb54-45"><a href="10-free-space.html#cb54-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plotOutput</span>(<span class="st">&quot;map&quot;</span>),</span>
-<span id="cb54-46"><a href="10-free-space.html#cb54-46" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb54-47"><a href="10-free-space.html#cb54-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">helpText</span>(<span class="st">&quot;The disease is growing, and as it is still containable, this is a good way to keep an eye on spreading of the disease&quot;</span>)</span>
-<span id="cb54-48"><a href="10-free-space.html#cb54-48" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb54-49"><a href="10-free-space.html#cb54-49" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb54-50"><a href="10-free-space.html#cb54-50" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb54-51"><a href="10-free-space.html#cb54-51" aria-hidden="true" tabindex="-1"></a>))</span></code></pre></div>
-<p>To show you what my shiny application looks like I added a screenshot down below, to acces my shiny application visit my github page: <a href="https://github.com/TimoVoskuilen/apenpokken" class="uri">https://github.com/TimoVoskuilen/apenpokken</a> and download my project. there you will be able to run the application.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="10-free-space.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="do">##ui.R</span></span>
+<span id="cb52-2"><a href="10-free-space.html#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="10-free-space.html#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb52-4"><a href="10-free-space.html#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maps)</span>
+<span id="cb52-5"><a href="10-free-space.html#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb52-6"><a href="10-free-space.html#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(neattools)</span>
+<span id="cb52-7"><a href="10-free-space.html#cb52-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-8"><a href="10-free-space.html#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Source my monkeypox file with data</span></span>
+<span id="cb52-9"><a href="10-free-space.html#cb52-9" aria-hidden="true" tabindex="-1"></a>monkeypox_data<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data_raw/Monkey_Pox_Cases_Worldwide.csv&quot;</span>)</span>
+<span id="cb52-10"><a href="10-free-space.html#cb52-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(monkeypox_data)[<span class="fu">names</span>(monkeypox_data)<span class="sc">==</span><span class="st">&quot;Country&quot;</span>]<span class="ot">&lt;-</span><span class="st">&quot;country&quot;</span></span>
+<span id="cb52-11"><a href="10-free-space.html#cb52-11" aria-hidden="true" tabindex="-1"></a>monkeypox_data<span class="ot">&lt;-</span><span class="fu">replacevalue</span>(monkeypox_data, <span class="st">&quot;country&quot;</span>, <span class="st">&quot;England&quot;</span>, <span class="st">&quot;United Kingdom&quot;</span>)</span>
+<span id="cb52-12"><a href="10-free-space.html#cb52-12" aria-hidden="true" tabindex="-1"></a>monkeypox_data</span>
+<span id="cb52-13"><a href="10-free-space.html#cb52-13" aria-hidden="true" tabindex="-1"></a><span class="co"># source of country latitude and longtitude </span></span>
+<span id="cb52-14"><a href="10-free-space.html#cb52-14" aria-hidden="true" tabindex="-1"></a>countryCoordinates <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data_raw/world_country_and_usa_states_latitude_and_longitude_values.csv&quot;</span>)</span>
+<span id="cb52-15"><a href="10-free-space.html#cb52-15" aria-hidden="true" tabindex="-1"></a>countryCoordinates2 <span class="ot">&lt;-</span> countryCoordinates[,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)]</span>
+<span id="cb52-16"><a href="10-free-space.html#cb52-16" aria-hidden="true" tabindex="-1"></a>countryCoordinates2</span>
+<span id="cb52-17"><a href="10-free-space.html#cb52-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a smaller data frame including only my variables of #interest:country, monkeypox rate, continent</span></span>
+<span id="cb52-18"><a href="10-free-space.html#cb52-18" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span> monkeypox_data[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)]</span>
+<span id="cb52-19"><a href="10-free-space.html#cb52-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-20"><a href="10-free-space.html#cb52-20" aria-hidden="true" tabindex="-1"></a>mergedCleaned <span class="ot">&lt;-</span> <span class="fu">merge</span>(monkeypox_data, countryCoordinates2, <span class="at">by=</span><span class="st">&quot;country&quot;</span>, <span class="at">all.x=</span><span class="cn">FALSE</span>)</span>
+<span id="cb52-21"><a href="10-free-space.html#cb52-21" aria-hidden="true" tabindex="-1"></a>mergedCleaned</span>
+<span id="cb52-22"><a href="10-free-space.html#cb52-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-23"><a href="10-free-space.html#cb52-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Define UI for my first breast cancer application</span></span>
+<span id="cb52-24"><a href="10-free-space.html#cb52-24" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyUI</span>(<span class="fu">pageWithSidebar</span>(</span>
+<span id="cb52-25"><a href="10-free-space.html#cb52-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb52-26"><a href="10-free-space.html#cb52-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># my Application title</span></span>
+<span id="cb52-27"><a href="10-free-space.html#cb52-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">headerPanel</span>(<span class="st">&quot;Monkeypox Rate across Countrys&quot;</span>),</span>
+<span id="cb52-28"><a href="10-free-space.html#cb52-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb52-29"><a href="10-free-space.html#cb52-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># a sidebar with controls to select the continent for wich I want to see the distribution</span></span>
+<span id="cb52-30"><a href="10-free-space.html#cb52-30" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb52-31"><a href="10-free-space.html#cb52-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sidebarPanel</span>(</span>
+<span id="cb52-32"><a href="10-free-space.html#cb52-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">numericInput</span>(<span class="st">&quot;obs&quot;</span>, <span class="st">&quot;Choose how many countries to view in the table&quot;</span>, <span class="dv">3</span>),</span>
+<span id="cb52-33"><a href="10-free-space.html#cb52-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectInput</span>(<span class="st">&quot;plottie&quot;</span>, <span class="st">&quot;Choose what you want to plot&quot;</span>, <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">&quot;Confirmed_Cases&quot;</span>, <span class="st">&quot;Suspected_Cases&quot;</span>, <span class="st">&quot;Hospitalized&quot;</span>))</span>
+<span id="cb52-34"><a href="10-free-space.html#cb52-34" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb52-35"><a href="10-free-space.html#cb52-35" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb52-36"><a href="10-free-space.html#cb52-36" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb52-37"><a href="10-free-space.html#cb52-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mainPanel</span>(</span>
+<span id="cb52-38"><a href="10-free-space.html#cb52-38" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb52-39"><a href="10-free-space.html#cb52-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">h4</span>(<span class="fu">textOutput</span>(<span class="st">&quot;caption&quot;</span>)),</span>
+<span id="cb52-40"><a href="10-free-space.html#cb52-40" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb52-41"><a href="10-free-space.html#cb52-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tableOutput</span>(<span class="st">&quot;rank&quot;</span>),</span>
+<span id="cb52-42"><a href="10-free-space.html#cb52-42" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb52-43"><a href="10-free-space.html#cb52-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">helpText</span>(<span class="st">&quot;Below we report the same data of the table, on a world map. The size of the circle corresponds to the number of monkeypox new cases on that country.&quot;</span>),</span>
+<span id="cb52-44"><a href="10-free-space.html#cb52-44" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb52-45"><a href="10-free-space.html#cb52-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plotOutput</span>(<span class="st">&quot;map&quot;</span>),</span>
+<span id="cb52-46"><a href="10-free-space.html#cb52-46" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb52-47"><a href="10-free-space.html#cb52-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">helpText</span>(<span class="st">&quot;The disease is growing, and as it is still containable, this is a good way to keep an eye on spreading of the disease&quot;</span>)</span>
+<span id="cb52-48"><a href="10-free-space.html#cb52-48" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb52-49"><a href="10-free-space.html#cb52-49" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb52-50"><a href="10-free-space.html#cb52-50" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb52-51"><a href="10-free-space.html#cb52-51" aria-hidden="true" tabindex="-1"></a>))</span></code></pre></div>
+<p>To show you what my shiny application looks like I added a screenshot down below, my app is currently being hosted: u can check it out here: <a href="https://timovoskuilen.shinyapps.io/apenpokken/" class="uri">https://timovoskuilen.shinyapps.io/apenpokken/</a></p>
 <p><img src="images/monkeypox_shiny.png" /></p>
 
 </div>

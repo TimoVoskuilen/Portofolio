@@ -181,7 +181,7 @@ shinyUI(pageWithSidebar(
 
 ```
 
-To show you what my shiny application looks like I added a screenshot down below, to acces my shiny application visit my github page: https://github.com/TimoVoskuilen/apenpokken and download my project. there you will be able to run the application.
+To show you what my shiny application looks like I added a screenshot down below, my app is currently being hosted: u can check it out here: https://timovoskuilen.shinyapps.io/apenpokken/ 
 
 ![](./images/monkeypox_shiny.png)
 
