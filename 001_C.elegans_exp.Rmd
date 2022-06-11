@@ -5,6 +5,10 @@ library("ggplot2")
 library("readxl")
 ```
 
+To show my ability to visualize data, a mock dataset supplied by J. Louter (ILC) has been analysed. The data was derived from an experiment in which C.elegans were exposed to different concentrations of different compounds, to see wheter they would affect offspring count.
+
+
+
 The data types of the variables RawData, compName and compConcentration:
 
 ```{r 1.1.c, warning = FALSE}

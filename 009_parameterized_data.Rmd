@@ -28,7 +28,7 @@ parameter$country<-"Spain"
 ```
 
 ```{r visualising the covid-19 cases, message=FALSE, warning=FALSE}
-covid_19_data %>% group_by(day, month, year) %>% filter(countriesAndTerritories == parameter$country) %>%
+covid_19_data %>% group_by(day, month, year) %>% filter(countriesAndTerritories %in% parameter$country) %>%
   ggplot(aes(x = month, y = cases)) +
   geom_point() +
   scale_x_continuous(breaks = seq(1, 12, 1)) +

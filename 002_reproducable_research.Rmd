@@ -6,6 +6,9 @@ library(ggrepel)
 library(scales)
 ```
 
+Reproducable research is a big subject in the data sciences for biology nowadays. In this exercise I reviewed an article on reproducibility, and furthermore I replicated a graph from a study I found online, to check wether it would be hard, or easy to replicate.
+
+
 __Part 1__
 
 Link to the study: https://pubmed.ncbi.nlm.nih.gov/30909941/

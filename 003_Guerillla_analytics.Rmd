@@ -13,6 +13,5 @@ An example of this van be found below:
 
 ```{r}
 #create a tree for the DAUR2 structure
-fs::dir_tree(dir = "https://github.com/TimoVoskuilen/Portofolio/tree/main/data/data_Raw/003_data_management")
 knitr::include_graphics("./images/Guerilla_analytics_framework_daur2.png")
 ```
