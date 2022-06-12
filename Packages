@@ -1,0 +1,19 @@
+Here is a list with all the packages needed for this portofolio to work:
+tidyverse
+ggplot2
+readxl
+ggrepel
+scales
+rMEA
+DBI
+fdaMixed
+lubridate
+readr
+gridExtra
+grid
+devtools
+neattools
+here
+shiny
+maps
+dplyr
